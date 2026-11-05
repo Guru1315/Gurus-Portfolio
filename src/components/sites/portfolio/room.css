@@ -1,0 +1,10 @@
+@font-face{font-family:'Onest';font-style:normal;font-display:swap;font-weight:100 900;src:url(/sites/portfolio/fonts/onest-latin.woff2) format('woff2')}
+html,body{margin:0;background:#0F0E0E}
+.door-room{min-height:100vh;display:grid;place-items:center;padding:2rem 1rem;box-sizing:border-box;font-family:'Onest',ui-sans-serif,system-ui,sans-serif;color:#E8E4E0;
+  background:radial-gradient(120% 80% at 50% 0%,color-mix(in srgb,var(--room) 55%,transparent),transparent 70%),#0F0E0E}
+.door-room__in{max-width:40rem;text-align:center}
+.door-room__eye{margin:0 0 1rem;font-size:.8125rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;opacity:.6}
+.door-room__h{margin:0;font-size:clamp(2.5rem,7vw,5rem);font-weight:600;line-height:1;letter-spacing:-.03em}
+.door-room__p{margin:1.5rem auto 2.5rem;max-width:28rem;font-size:1.125rem;line-height:1.5;opacity:.75}
+.door-room__back{display:inline-flex;align-items:center;min-height:3rem;padding:0 1.5rem;border-radius:999px;border:1px solid rgba(232,228,224,.25);background:none;color:inherit;font:inherit;font-weight:600;text-decoration:none;cursor:pointer}
+.door-room__back:hover{background:rgba(232,228,224,.08)}
