@@ -23,7 +23,7 @@ export type SiteContent = {
 export const site: SiteContent = {
   name: "Guru Charan",
   firstName: "Guru",
-  email: "gurumuru291@gmail.com",
+  email: "gurumurugan291@gmail.com",
   title: "Guru Charan — Freelance Web & App Developer, UI/UX Designer",
   description:
     "Freelance developer and designer building websites, apps and brand design for clients worldwide.",
