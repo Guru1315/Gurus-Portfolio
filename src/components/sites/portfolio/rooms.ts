@@ -18,6 +18,24 @@ export type Project = {
   icon?: string;
 };
 
+/** One print hanging on a brand's line. A deck is a carousel: it hangs as a little stack and opens slide by slide. */
+export type Print = { f: string; w: number; h: number; dark?: boolean; title?: string; deck?: { f: string; w: number; h: number }[] };
+
+/** A brand's own line in the Graphic Design room, in its own colours. */
+export type World = {
+  k: string;
+  name: string;
+  /** The softer second half of the name, e.g. "Living" in "Aranya Living". */
+  em?: string;
+  kicker: string;
+  desc: string;
+  tags: string[];
+  bg: string;
+  fg: string;
+  acc: string;
+  items: Print[];
+};
+
 export type RoomInfo = {
   slug: string;
   title: string;
@@ -25,14 +43,88 @@ export type RoomInfo = {
   seoTitle: string;
   colour: string;
   blurb: string;
-  /** Desktop sites show on a monitor, apps on an iPhone. */
-  device: "monitor" | "phone";
+  /** Desktop sites show on a monitor, apps on an iPhone, designs hang on a washing line. */
+  device: "monitor" | "phone" | "line";
   projects: Project[];
+  worlds?: World[];
   /** Shown while a room has no projects yet. */
   soon?: string;
 };
 
 const shot = (name: string) => `/sites/portfolio/work/${name}.webp`;
+const gd = (name: string, w = 1080, h = 1350) => ({ f: `/sites/portfolio/gd/${name}.webp`, w, h });
+
+const WORLDS: World[] = [
+  {
+    k: "aranya",
+    name: "Aranya",
+    em: "Living",
+    kicker: "Social campaign · Real estate",
+    desc: "A launch campaign for courtyard homes in Bengaluru: sun-baked arches, terracotta and olive, and editorial type that sells morning light rather than square feet.",
+    tags: ["Art direction", "Instagram posts", "Illustration"],
+    bg: "#2A2420",
+    fg: "#F1E7D8",
+    acc: "#D9925F",
+    items: ["ar-1", "ar-2", "ar-3", "ar-4", "ar-5"].map((n) => gd(n)),
+  },
+  {
+    k: "kaelum",
+    name: "Kaelum",
+    em: "Springs",
+    kicker: "Social campaign · Premium water",
+    desc: "A campaign for a Himalayan glacial water: icy light, a glass bottle beaded with cold, and quiet serif lines that make still water feel like luxury.",
+    tags: ["Product illustration", "Instagram posts", "Brand voice"],
+    bg: "#E6EDF2",
+    fg: "#0D2235",
+    acc: "#2E4A61",
+    items: ["ke-1", "ke-2", "ke-3", "ke-4"].map((n) => gd(n)),
+  },
+  {
+    k: "saanvi",
+    name: "Saanvi",
+    em: "Atelier",
+    kicker: "Posts & stories · Fashion",
+    desc: "Posts and stories for a handloom womenswear label: Bodoni editorial type, product callouts, a colour-of-the-season palette and shop-the-look stories.",
+    tags: ["Fashion editorial", "Posts & stories", "Product callouts"],
+    bg: "#D9BDB5",
+    fg: "#2B2324",
+    acc: "#6E4A4C",
+    items: [gd("sa-1"), gd("sa-2"), gd("sa-3"), gd("sa-4", 1080, 1920), gd("sa-5", 1080, 1920)],
+  },
+  {
+    k: "cortexa",
+    name: "Cortexa",
+    em: "AI",
+    kicker: "Carousels · AI company",
+    desc: "Swipe-through explainers for an AI company: how cameras read a crowd before it peaks, and what AI really does in a classroom. Click a stack to swipe through it.",
+    tags: ["Carousels", "Information design", "Data viz"],
+    bg: "#15122B",
+    fg: "#EEEAF8",
+    acc: "#D7FF3A",
+    items: [
+      { ...gd("cx-a1"), title: "How AI reads a crowd", deck: ["cx-a1", "cx-a2", "cx-a3", "cx-a4", "cx-a5"].map((n) => gd(n)) },
+      { ...gd("cx-b1"), title: "AI in the classroom", deck: ["cx-b1", "cx-b2", "cx-b3", "cx-b4"].map((n) => gd(n)) },
+      { ...gd("cx-a3"), title: "How AI reads a crowd · 3" },
+      { ...gd("cx-b3"), title: "AI in the classroom · 3" },
+    ],
+  },
+  {
+    k: "posters",
+    name: "Posters & logos",
+    kicker: "Events · Identity",
+    desc: "Posters for a college fest, a music night and a 24-hour hackathon, and logo marks for every brand on these lines, from bold type-led launches to quiet identities.",
+    tags: ["Event posters", "Logo design", "Typography"],
+    bg: "#1A1818",
+    fg: "#E8E4E0",
+    acc: "#C4B0B0",
+    items: [
+      gd("po-spectrum", 1000, 1414),
+      gd("po-midnight", 1000, 1414),
+      gd("po-hack"),
+      ...["lg-aranya", "lg-kaelum", "lg-saanvi", "lg-cortexa", "lg-brew"].map((n) => ({ ...gd(n, 1000, 1000), dark: true })),
+    ],
+  },
+];
 
 export const ROOMS: RoomInfo[] = [
   {
@@ -217,9 +309,10 @@ export const ROOMS: RoomInfo[] = [
     title: "Graphic Design",
     seoTitle: "Freelance Graphic Designer",
     colour: "#a4552c",
-    device: "monitor",
-    blurb: "Brand campaigns, social media creatives, posters and logos.",
+    device: "line",
+    blurb:
+      "Brand campaigns, social media creatives, posters and logos. Each brand hangs on its own line, in its own colours: scroll to walk along it, click any print to see it up close.",
     projects: [],
-    soon: "New graphic design work is on its way. In the meantime, say hello and tell me what you need designed.",
+    worlds: WORLDS,
   },
 ];
