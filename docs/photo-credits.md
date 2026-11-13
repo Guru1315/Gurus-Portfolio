@@ -1,16 +1,16 @@
 # Photo credits
 
-The Graphic Design room's concept campaigns (Aranya Living, Kaelum Springs, Saanvi Atelier, Cortexa AI and the posters) are designed over these photographs, found through [Openverse](https://openverse.org). All are CC0, public domain or CC BY; the brands, copy and layouts are original.
+The Graphic Design room's concept campaigns (Aranya Living, Kaelum Springs, Saanvi Atelier, Cortexa AI and the posters) are designed over these photographs, found through [Openverse](https://openverse.org) and [Wikimedia Commons](https://commons.wikimedia.org). All are CC0, public domain or CC BY; the brands, copy and layouts are original.
 
 | Photo | Creator | Licence | Source |
 |---|---|---|---|
 | arne jacobsen, skodsborg strandvej 300, 1953-1956 | seier+seier | CC BY 2.0 | https://www.flickr.com/photos/94852245@N00/3815635634 |
 | The Kassandra Bay Hotel & Spa swimming pool at night | KB Collection Hotels & Resorts | CC BY 2.0 | https://www.flickr.com/photos/83603436@N07/7745142058 |
 | Schaffelbad bei Nacht | Therme Loipersdorf | CC BY 2.0 | https://www.flickr.com/photos/39721390@N02/3652911725 |
+| Modern Luxury Living Room Interior / Loft Apartment Architecture | Foto Miki Digital | CC PDM 1.0 | https://www.flickr.com/photos/96511847@N04/9202816086 |
 | Living Room | Jeremy Levine Design | CC BY 2.0 | https://www.flickr.com/photos/25186605@N04/3640110011 |
 | Living Room | Jeremy Levine Design | CC BY 2.0 | https://www.flickr.com/photos/25186605@N04/4329977835 |
 | two-story-home-lit-windows (Creative Commons) | vcmxnajg1 | CC BY 2.0 | https://www.flickr.com/photos/200871378@N03/53833977372 |
-| Modern Luxury Living Room Interior / Loft Apartment Architecture | Foto Miki Digital | CC PDM 1.0 | https://www.flickr.com/photos/96511847@N04/9202816086 |
 | Free modern kitchen interior image | Unknown | CC CC0 1.0 | https://www.rawpixel.com/image/5906894/photo-image-public-domain-kitchen-interior |
 | Sustainable Kitchen | Jeremy Levine Design | CC BY 2.0 | https://www.flickr.com/photos/25186605@N04/3240119298 |
 | Red Box at Night | Jeremy Levine Design | CC BY 2.0 | https://www.flickr.com/photos/25186605@N04/3640920662 |
@@ -46,16 +46,16 @@ The Graphic Design room's concept campaigns (Aranya Living, Kaelum Springs, Saan
 | OWL OSAKA Opening Party - 20120502【SUNSET】 | Mixtribe Photo | CC BY 2.0 | https://www.flickr.com/photos/24279287@N03/7138164329 |
 | Light and sound | sagesolar | CC BY 2.0 | https://www.flickr.com/photos/62356799@N06/15388034734 |
 | TechCrunch Disrupt Europe Hackathon | TechCrunch | CC BY 2.0 | https://www.flickr.com/photos/52522100@N07/10497595923 |
-| Stop Looking! Fashion Runway 2011 | henryjose | CC BY 2.0 | https://www.flickr.com/photos/60797425@N00/5531225163 |
-| Stop Looking! Fashion Runway 2011 | henryjose | CC BY 2.0 | https://www.flickr.com/photos/60797425@N00/5532601482 |
-| Stop Looking! Fashion Runway 2011 | henryjose | CC BY 2.0 | https://www.flickr.com/photos/60797425@N00/5532602242 |
-| Stop Looking! Fashion Runway 2011 | henryjose | CC BY 2.0 | https://www.flickr.com/photos/60797425@N00/5531779046 |
-| Buttercup collection for Esty Lingerie by Selivanoff. | SELIVANOFF | CC BY 2.0 | https://www.flickr.com/photos/29846986@N08/5800815941 |
 | Handloom weaving house | Aravindan Ganesan | CC BY 2.0 | https://www.flickr.com/photos/119742133@N04/20579941342 |
 | Silk tie in the abstract | Martin Cooper Ipswich | CC BY 2.0 | https://www.flickr.com/photos/92899351@N08/16696509105 |
 | Purple Fabric | Clearly Ambiguous | CC BY 2.0 | https://www.flickr.com/photos/84617037@N00/20349919 |
 | Red Fabric with Folds | shaire productions | CC BY 2.0 | https://www.flickr.com/photos/9822107@N08/4207544611 |
 | DesignM.ag Fabric Texture - 7 | designm.ag | CC BY 2.0 | https://www.flickr.com/photos/36281782@N03/3703785107 |
-| belly button | misselejane | CC BY 2.0 | https://www.flickr.com/photos/78158834@N08/8194925823 |
 | white silk 5 | jetheriot | CC BY 2.0 | https://www.flickr.com/photos/9198432@N02/2247737940 |
 | CL Society 198: Bride dress tail | francisco_osorio | CC BY 2.0 | https://www.flickr.com/photos/30330906@N04/6891355075 |
+| Chanderi Silk Sari outside a village home in Pranpur. (7045778685) | India Untravelled from India | CC BY 2.0 | https://commons.wikimedia.org/wiki/File:Chanderi_Silk_Sari_outside_a_village_home_in_Pranpur._(7045778685).jpg |
+| Silk saree on the making at Kanchipuram (7642281054) | Kamal Venkit | CC BY 2.0 | https://commons.wikimedia.org/wiki/File:Silk_saree_on_the_making_at_Kanchipuram_(7642281054).jpg |
+| Shawl, Varanasi, Uttar Pradesh, India, view 2, late 19th to early 20th century, silk, gold thread - Textile Museum of Canada - DSC00969 | Daderot | CC0 | https://commons.wikimedia.org/wiki/File:Shawl,_Varanasi,_Uttar_Pradesh,_India,_view_2,_late_19th_to_early_20th_century,_silk,_gold_thread_-_Textile_Museum_of_Canada_-_DSC00969.JPG |
+| Sari from India, Varanasi, 18th century, Honolulu Museum of Art 10911.1 | Hiart | CC0 | https://commons.wikimedia.org/wiki/File:Sari_from_India,_Varanasi,_18th_century,_Honolulu_Museum_of_Art_10911.1.JPG |
+| Sari, Varanasi, Uttar Pradesh, India, 1960s, silk, gold thread, satin - Textile Museum of Canada - DSC00943 | Daderot | CC0 | https://commons.wikimedia.org/wiki/File:Sari,_Varanasi,_Uttar_Pradesh,_India,_1960s,_silk,_gold_thread,_satin_-_Textile_Museum_of_Canada_-_DSC00943.JPG |
+| Saree29 | Deepana | CC0 | https://commons.wikimedia.org/wiki/File:Saree29.jpg |
