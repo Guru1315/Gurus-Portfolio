@@ -8,9 +8,10 @@ export type Project = {
   sub: string;
   desc: string;
   tags: string[];
-  url: string;
-  /** Button text for the link; defaults to "Visit live site". */
-  linkLabel?: string;
+  /** Live site, shown as a "Visit live site" button. Without one, the card shows a short note instead, as on the source. */
+  url?: string;
+  /** The note shown when there is no link; defaults to "Screens from the app". */
+  note?: string;
   /** Tall screenshot that scrolls on the monitor or phone screen. */
   shot: string;
   /** App icon shown beside the label (apps only). */
@@ -105,7 +106,6 @@ export const ROOMS: RoomInfo[] = [
         sub: "Source-grounded research and study",
         desc: "Upload your documents and ask questions with clickable citations, then turn everything into study guides, flashcards, quizzes, mind maps and podcast-style audio overviews.",
         tags: ["AI", "Citations", "Study tools"],
-        url: "https://mindlab-ai-psi.vercel.app",
         shot: shot("app-mindlab"),
         icon: shot("icon-mindlab"),
       },
@@ -115,7 +115,6 @@ export const ROOMS: RoomInfo[] = [
         sub: "AI food guide for Saveetha campus · Streamlit",
         desc: "An AI guide to the best food on campus, powered by Google Gemini: ask what to eat, where to find it and what's good today, and get answers in a friendly chat.",
         tags: ["Gemini AI", "Python", "Streamlit"],
-        url: "https://ai-chatbot-pvj39rjn32zxtyxtlqrehq.streamlit.app/",
         shot: shot("app-chatbot"),
         icon: shot("icon-chatbot"),
       },
@@ -125,7 +124,6 @@ export const ROOMS: RoomInfo[] = [
         sub: "Filter-coffee house · since 1983",
         desc: "A retro app for a Mylapore filter-coffee house: a 3D brass davara-tumbler on a sunburst, Tamil and English lettering, and an account to log in and order.",
         tags: ["3D", "Accounts & login", "Retro brand look"],
-        url: "https://kaapi-kadai-sail22.vercel.app",
         shot: shot("app-kaapi"),
         icon: shot("icon-kaapi"),
       },
@@ -135,8 +133,6 @@ export const ROOMS: RoomInfo[] = [
         sub: "AI personal planner",
         desc: "Describe a goal in plain English, like an exam in 18 days, and it builds a day-by-day plan around the hours you're free, with a dashboard, study streak and auto-rescheduling for missed sessions. Uses Gemini, or a built-in planner with no key.",
         tags: ["Gemini AI", "Planning", "JavaScript"],
-        url: "https://github.com/Guru1315/AI-Personal-Agent",
-        linkLabel: "View on GitHub",
         shot: shot("app-planai"),
         icon: shot("icon-planai"),
       },
@@ -146,8 +142,6 @@ export const ROOMS: RoomInfo[] = [
         sub: "Multi-agent software dev team",
         desc: "Give it a feature request and a team of AI agents (product manager, architect, developer and tester) writes the spec, design, code and tests, with a supervisor looping fixes until it passes. Built in Flowise and n8n, with a live web console.",
         tags: ["Multi-agent AI", "n8n & Flowise", "Supabase"],
-        url: "https://github.com/Guru1315/Develop-Team",
-        linkLabel: "View on GitHub",
         shot: shot("app-devteam"),
         icon: shot("icon-devteam"),
       },
@@ -157,8 +151,6 @@ export const ROOMS: RoomInfo[] = [
         sub: "Built on the open-source Surelock Homes",
         desc: "Pick a ZIP code and the agent checks licensed childcare providers against public records, comparing licensed capacity with the building's size, Street View and business listings, and flags anomalies for further review.",
         tags: ["AI agent", "Public data", "Python"],
-        url: "https://github.com/Guru1315/AI-Fraud-Investigation",
-        linkLabel: "View on GitHub",
         shot: shot("app-fraud"),
         icon: shot("icon-fraud"),
       },

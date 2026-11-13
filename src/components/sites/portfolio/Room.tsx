@@ -140,9 +140,13 @@ export function Room({ room }: { room: RoomInfo }) {
                         <li key={t}>{t}</li>
                       ))}
                     </ul>
-                    <a className="live" href={p.url} target="_blank" rel="noopener noreferrer">
-                      {p.linkLabel ?? "Visit live site"} {ARROW}
-                    </a>
+                    {p.url ? (
+                      <a className="live" href={p.url} target="_blank" rel="noopener noreferrer">
+                        Visit live site {ARROW}
+                      </a>
+                    ) : (
+                      <span className="note">{p.note ?? "Screens from the app"}</span>
+                    )}
                   </div>
                   <div className={`stage${phone ? " ph" : ""}`} aria-hidden="true">
                     {phone ? (
