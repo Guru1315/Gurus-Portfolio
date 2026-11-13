@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { site } from "./content";
+import { enquiriesDb, site } from "./content";
 import { portfolioMarkup } from "./markup";
 import { initPortfolio } from "./runtime";
 import "./portfolio.css";
@@ -15,6 +15,7 @@ export function PortfolioPage() {
       firstName: site.firstName,
       email: site.email,
       colourPortrait: "/sites/portfolio/portrait-colour.webp",
+      enquiries: enquiriesDb,
     });
   }, []);
 

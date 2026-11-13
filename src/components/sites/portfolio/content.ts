@@ -80,3 +80,12 @@ export const site: SiteContent = {
     },
   ],
 };
+
+// Where the "Start a project" form saves enquiries: the guru-portfolio Supabase project (Mumbai, ap-south-1).
+// Both values are public by design and ship to the browser. Row Level Security on public.enquiries lets this key
+// INSERT an enquiry and nothing else: it can't read, edit or delete any. Read enquiries in the Supabase dashboard
+// (Table Editor -> enquiries). Set the env vars to point at another project without a code change.
+export const enquiriesDb = {
+  url: process.env.NEXT_PUBLIC_SUPABASE_URL || "https://gxmxuztfliirqaoeooyi.supabase.co",
+  key: process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY || "sb_publishable_eRUkxUjzHRcwU3nQ1ctiMQ_wNTJIHVa",
+};

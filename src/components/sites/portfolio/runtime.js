@@ -157,8 +157,9 @@ modal.addEventListener('click', closeModal);
 $('#mPanel').addEventListener('click', e => e.stopPropagation());
 $('#mClose').addEventListener('click', closeModal);
 $('#mDone').addEventListener('click', closeModal);
-// the form sends for real only on the live website (Netlify receives it); anywhere else it opens an email
-const FORM_LIVE = false   /* no form backend in this clone: requests open an email */;
+// the form saves each enquiry to Supabase (table public.enquiries); without a Supabase project it opens an email instead
+const DB = cfg.enquiries && cfg.enquiries.url && cfg.enquiries.key ? cfg.enquiries : null;
+const FORM_LIVE = !!DB;
 const SEND_LABEL = FORM_LIVE ? 'Send enquiry' : 'Write the email';
 
 // ── the questionnaire: one question at a time, then an email to me with every answer filled in ──
@@ -240,7 +241,7 @@ form.addEventListener('submit', e => {
   const grade = fit >= 4 ? 'A' : fit === 3 ? 'B' : 'C';
   $('#f-fit').value = grade; $('#f-budget-label').value = budget;
   $('#f-subject').value = `[${grade}] ${g('service')} · ${budget} · ${g('name')}`;
-  const d = new FormData(form), name = g('name'), mail = g('email'), phone = g('phone'), proj = g('project');
+  const name = g('name'), mail = g('email'), phone = g('phone'), proj = g('project');
   const subject = $('#f-subject').value;
   const body = `Hi ${cfg.firstName},\n\n${proj}\n\nService: ${g('service')}\nBudget: ${budget}\nStart: ${g('timeline')}\nFor: ${g('client_type')}${g('website') ? '\nCompany: ' + g('website') : ''}\n\n— ${name}\n${mail}\n${phone}`;
   const viaMail = () => {
@@ -251,16 +252,28 @@ form.addEventListener('submit', e => {
     $('#mForm').hidden = true; $('#mSuccess').hidden = false; $('#mDone').focus();
   };
   if (!FORM_LIVE){ viaMail(); return; }
-  // on the real site the message goes straight to my inbox through Netlify Forms; if that fails for any reason, fall back to email
+  const sent = () => {
+    $('#mOkT').textContent = 'Message sent';
+    $('#mOkP').textContent = `Thanks, ${name}. I'll reply to ${mail} within one business day.`;
+    $('.msuccess__alt').hidden = true;
+    $('#mForm').hidden = true; $('#mSuccess').hidden = false; $('#mDone').focus();
+  };
+  // the hidden "company" field is a trap only bots fill in: thank them and save nothing
+  if (g('company')){ sent(); return; }
+  // the enquiry is saved to Supabase; the public key may only add rows (Row Level Security), so we ask for nothing back.
+  // If saving fails for any reason, fall back to email so no enquiry is ever lost.
   const btn = $('#mSend'); btn.disabled = true; $('#mSendLbl').textContent = 'Sending…';
-  fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(d).toString() })
-    .then(r => {
-      if (!r.ok) throw new Error(r.status);
-      $('#mOkT').textContent = 'Message sent';
-      $('#mOkP').textContent = `Thanks, ${name}. I'll reply to ${mail} within one business day.`;
-      $('.msuccess__alt').hidden = true;
-      $('#mForm').hidden = true; $('#mSuccess').hidden = false; $('#mDone').focus();
-    })
+  const row = {
+    service: g('service'), budget, currency: g('currency'), timeline: g('timeline'), client_type: g('client_type'),
+    name: name.slice(0, 80), email: mail.slice(0, 120), phone: phone.slice(0, 20), website: g('website').slice(0, 200) || null,
+    project: proj.slice(0, 1500), fit: grade,
+  };
+  fetch(DB.url.replace(/\/$/, '') + '/rest/v1/enquiries', {
+    method: 'POST',
+    headers: { apikey: DB.key, 'Content-Type': 'application/json', Prefer: 'return=minimal' },
+    body: JSON.stringify(row),
+  })
+    .then(r => { if (!r.ok) throw new Error(r.status); sent(); })
     .catch(viaMail)
     .finally(() => { btn.disabled = false; $('#mSendLbl').textContent = SEND_LABEL; });
 });
