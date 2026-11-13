@@ -222,14 +222,4 @@ export const ROOMS: RoomInfo[] = [
     projects: [],
     soon: "New graphic design work is on its way. In the meantime, say hello and tell me what you need designed.",
   },
-  {
-    slug: "photographer",
-    title: "Photography",
-    seoTitle: "Photography",
-    colour: "#262523",
-    device: "monitor",
-    blurb: "Moments, places and people, seen through my lens.",
-    projects: [],
-    soon: "A wall of photographs is coming to this room soon.",
-  },
 ];

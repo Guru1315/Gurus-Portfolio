@@ -23,7 +23,6 @@ export function portfolioMarkup(c: SiteContent): string {
     <div class="ld__pill" style="--k:2;--c:#4a3540;--t:#E8E4E0;--dir:1"><span>App development</span></div>
     <div class="ld__pill" style="--k:3;--c:#7a8670;--t:#F3EEEC;--dir:-1"><span>UI/UX design</span></div>
     <div class="ld__pill" style="--k:4;--c:#a4552c;--t:#F3EEEC;--dir:1"><span>Graphic design</span></div>
-    <div class="ld__pill" style="--k:5;--c:#C4B0B0;--t:#1A1818;--dir:-1"><span>Photography</span></div>
   </div>
   <div class="ld__hud">
     <div class="ld__top"><span><b>${esc(c.name)}</b> · Portfolio</span><span>Web · App · UI/UX · Graphic design</span></div>
@@ -85,7 +84,7 @@ export function portfolioMarkup(c: SiteContent): string {
       <div class="hero__left">
         <p class="eyebrow rv" style="--d:200ms">Independent Freelancer</p>
         <h1 class="h1">
-          <span class="sr-only">Hi, I'm ${esc(c.firstName)}. I am a photographer, graphic designer, UI/UX designer and developer.</span>
+          <span class="sr-only">Hi, I'm ${esc(c.firstName)}. I am a graphic designer, UI/UX designer and developer.</span>
           <span aria-hidden="true">
             <span class="line"><span style="--d:250ms">Hi, I'm ${esc(c.firstName)}.</span></span>
             <span class="line"><span class="soft" style="--d:370ms">I am a</span></span>
@@ -212,24 +211,6 @@ export function portfolioMarkup(c: SiteContent): string {
             <span class="pool"></span>
           </button>
         </li>
-        <li class="unit unit--secret" style="--i:4;--door:#262523;--door-dk:#201f1d" inert>
-          <button class="doorway" aria-label="Open the Photographer door">
-            <span class="casing"></span>
-            <span class="opening">
-              <span class="room"></span>
-              <span class="spill"></span>
-              <span class="door">
-                <span class="door__flute"></span>
-                <span class="plate">Photographer</span>
-                <span class="handle"><span class="handle__lever"></span><span class="handle__lock"></span></span>
-                <span class="door__shade"></span>
-                <span class="leak"></span>
-              </span>
-              <span class="sill"></span>
-            </span>
-            <span class="pool"></span>
-          </button>
-        </li>
       </ul>
     </div>
     <div class="doors__floor" aria-hidden="true"></div>
@@ -275,7 +256,7 @@ ${c.timeline.map(chapter).join("\n")}
       <button class="sf__ghost" data-go="works">See my work</button>
     </div>
     <div class="sf__cols">
-      <div><h3>Work</h3><ul class="work"><li><a href="/web-developer" data-door="0">Web Development</a></li><li><a href="/app-developer" data-door="1">App Development</a></li><li><a href="/ui-ux-designer" data-door="2">UI/UX Design</a></li><li><a href="/graphic-designer" data-door="3">Graphic Design</a></li><li><a href="/photographer" data-door="4">Photography</a></li></ul></div>
+      <div><h3>Work</h3><ul class="work"><li><a href="/web-developer" data-door="0">Web Development</a></li><li><a href="/app-developer" data-door="1">App Development</a></li><li><a href="/ui-ux-designer" data-door="2">UI/UX Design</a></li><li><a href="/graphic-designer" data-door="3">Graphic Design</a></li></ul></div>
       <div><h3>Navigate</h3><ul><li><a href="/" data-go="home">Home</a></li><li><a href="/#about" data-go="about">My story</a></li><li><button data-contact>Contact</button></li></ul></div>
       <div><h3>Status</h3><ul><li class="st">Available for work</li><li class="st">Remote-first, worldwide</li><li class="st">Local time <span data-ftime>—</span></li></ul></div>
     </div>
@@ -336,7 +317,6 @@ ${c.timeline.map(chapter).join("\n")}
           <label class="qc"><input type="radio" name="service" value="iOS or mobile app"><span>iOS or mobile app</span></label>
           <label class="qc"><input type="radio" name="service" value="UI/UX design"><span>UI/UX design for a product</span></label>
           <label class="qc"><input type="radio" name="service" value="Brand or graphic design"><span>Brand or graphic design</span></label>
-          <label class="qc"><input type="radio" name="service" value="Photography"><span>Photography</span></label>
           <label class="qc qc--q"><input type="radio" name="service" value="question"><span>I have a question about this website</span></label>
         </fieldset>
 

@@ -277,7 +277,7 @@ bindHovers();
 
 /* ---------- Flip calendar: skills on an endless desk-calendar flip ---------- */
 (function flipCalendar(){
-  const SKILLS = ['Web Developer', 'App Developer', 'UI/UX Designer', 'Graphic Designer', 'Photographer'];
+  const SKILLS = ['Web Developer', 'App Developer', 'UI/UX Designer', 'Graphic Designer'];
   const HOLD = 1700, FLIP = 1250;
   const cal = $('#cal'); if (!cal) return;
   const body = $('.cal__body', cal), leaf = $('.cal__leaf', cal);
@@ -822,10 +822,10 @@ const toggleMode = () => setMode(getMode() === 'dark' ? 'light' : 'dark');
 
 /* ---------- Doors: hover cracks a door open; click swings it open and carries you through it ---------- */
 (function doors(){
-  // each door is its own page (/photographer etc.)
-  const ROUTES = ['/web-developer', '/app-developer', '/ui-ux-designer', '/graphic-designer', '/photographer'];
-  const SLUGS = ['web-developer', 'app-developer', 'ui-ux-designer', 'graphic-designer', 'photographer'];
-  // a link like …#photographer lands at the doors and walks straight through that one
+  // each door is its own page (/web-developer etc.)
+  const ROUTES = ['/web-developer', '/app-developer', '/ui-ux-designer', '/graphic-designer'];
+  const SLUGS = ['web-developer', 'app-developer', 'ui-ux-designer', 'graphic-designer'];
+  // a link like …#app-developer lands at the doors and walks straight through that one
   const HASH_DOOR = SLUGS.indexOf(decodeURIComponent(location.hash.slice(1)));
   if (HASH_DOOR >= 0){
     try { history.replaceState(null, '', location.pathname + location.search + '#works'); } catch (e) {}
@@ -884,7 +884,7 @@ const toggleMode = () => setMode(getMode() === 'dark' ? 'light' : 'dark');
      Opening the door reveals that same live wall, so there is no page swap to glitch. */
   const wallv = $('#wallv');
   // every door has its own room, loaded inside this page, so stepping in and coming back never reloads anything
-  const frames = [], ready = [], TITLES = ['Web Development', 'App Development', 'UI/UX Design', 'Graphic Design', 'Photography'];
+  const frames = [], ready = [], TITLES = ['Web Development', 'App Development', 'UI/UX Design', 'Graphic Design'];
   let frame = null, frameReady = false, cur = 0, inWall = false, pushed = false, savedGap = null;
   function loadRoom(i){
     if (frames[i]) return;
@@ -929,7 +929,6 @@ const toggleMode = () => setMode(getMode() === 'dark' ? 'light' : 'dark');
     ['App Development', 'From the first idea to the app store', ['Product scoping & user flows', 'Interface design', 'Cross-platform development', 'Device testing & store launch', 'Analytics, monitoring & updates']],
     ['UI/UX Design', 'Research first, pixels second', ['Brand & business needs analysis', 'User & competitor research', 'Information architecture & flows', 'Wireframes & high-fidelity UI', 'Interactive prototypes & testing']],
     ['Graphic Design', 'Visual content true to the brand', ['Brand, audience & tone analysis', 'Built around brand guidelines', 'Posters & social media creatives', 'Strong type & clear hierarchy', 'Every format each platform needs']],
-    ['Photography', 'The eye behind every layout', ['Architecture, concerts & sport', 'Nature & product', 'Light & composition first']],
   ];
   const dinfo = $('#dinfo'), wallEl = $('.doors__wall', sec), MOB = matchMedia('(max-width: 639.98px)');
   units.forEach((u, i) => $('.doorway', u).setAttribute('aria-description', INFO[i][1] + ': ' + INFO[i][2].join(', ')));
@@ -1053,12 +1052,6 @@ const toggleMode = () => setMode(getMode() === 'dark' ? 'light' : 'dark');
   if (MOB.matches){ mShown = -1; mShow(0); dinfo.classList.add('on'); mCur = mTarget(); mApply(); }
   MOB.addEventListener?.('change', () => { mForce = -1; mShown = -1; mFromScroll(); mApply(); if (MOB.matches) dinfo.classList.add('on'); });
 
-  // the Photography door sits just past the end of the wall: only the menu (or its link) slides the wall along to it
-  const SECRET = 4, secretUnit = units[SECRET];
-  function reveal(on){
-    sec.classList.toggle('reveal', on);
-    if (on) secretUnit.removeAttribute('inert'); else secretUnit.setAttribute('inert', '');
-  }
   window.openDoor = i => {
     if (busy || inWall) return;
     const top = MOB.matches ? mobY(Math.min(i, 3)) : sec.getBoundingClientRect().top + pageYOffset;
@@ -1072,11 +1065,11 @@ const toggleMode = () => setMode(getMode() === 'dark' ? 'light' : 'dark');
       const row = $('.doors__row', sec), u = doorsState[i].u;
       let wait = 0;
       if (MOB.matches){
-        const want = i === SECRET ? SECRET : i, before = mForce >= 0 ? mForce : mIdx;
-        if (i === SECRET){ reveal(true); mForce = SECRET; } else mIdx = i;
+        const before = mForce >= 0 ? mForce : mIdx;
+        mIdx = i;
         mApply();
-        if (want !== before) wait = reduced ? 0 : 560;
-      } else if (i === SECRET && !sec.classList.contains('reveal')){ reveal(true); wait = reduced ? 0 : 850; }
+        if (i !== before) wait = reduced ? 0 : 560;
+      }
       setTimeout(() => enter(i), wait);
     };
     requestAnimationFrame(settle);
@@ -1195,12 +1188,7 @@ const toggleMode = () => setMode(getMode() === 'dark' ? 'light' : 'dark');
           holdScroll(false);
           toWall({ wall: 'reset' });
           if (afterLeave){ const f = afterLeave; afterLeave = null; setTimeout(f, 60); }
-          if (cur === SECRET){
-            // back out, then the wall slides back and the Photography door is hidden again
-            if (MOB.matches){ mForce = -1; mFromScroll(); mApply(); setTimeout(() => reveal(false), reduced ? 0 : 580); }
-            else setTimeout(() => reveal(false), reduced ? 0 : 500);
-            units[SECRET - 1].querySelector('.doorway').focus({ preventScroll: true });
-          } else d.way.focus({ preventScroll: true });
+          d.way.focus({ preventScroll: true });
         });
       }, reduced ? 0 : 360);
     }, reduced ? 0 : 520);
@@ -1229,7 +1217,7 @@ const toggleMode = () => setMode(getMode() === 'dark' ? 'light' : 'dark');
   addEventListener('pageshow', e => {
     if (!busy && !e.persisted) return;
     cancelAnimationFrame(walkRaf); dark.hidden = true; shade.hidden = true;
-    sec.classList.remove('through'); sec.style.transform = ''; sec.style.transformOrigin = ''; reveal(false);
+    sec.classList.remove('through'); sec.style.transform = ''; sec.style.transformOrigin = '';
     veil.classList.remove('on'); veil.hidden = true; veil.style.clipPath = ''; veil.innerHTML = '';
     wallv.classList.remove('on','live'); wallv.style.clipPath = '';
     $('#cord')?.classList.remove('away'); $('.hdr')?.classList.remove('away');
@@ -1272,8 +1260,8 @@ if (['#works', '#about', '#contact'].includes(location.hash)){
   const loaded = () => { ready = 1; };
   if (document.readyState === 'complete') loaded(); else addEventListener('load', loaded, { once: true });
   setTimeout(loaded, 5000);                               // never keep anyone waiting long
-  // one colour joins the stack for each sixth of the way
-  const paint = p => { loader.style.setProperty('--p', p.toFixed(3)); pills.forEach((el, k) => el.classList.toggle('on', p >= k / 6 + .02 || p >= 1)); };
+  // one colour joins the stack for each equal share of the way
+  const paint = p => { loader.style.setProperty('--p', p.toFixed(3)); pills.forEach((el, k) => el.classList.toggle('on', p >= k / pills.length + .02 || p >= 1)); };
   const FILL = 1600;
   let t0 = null, shown = 0;
   function loadTick(now){

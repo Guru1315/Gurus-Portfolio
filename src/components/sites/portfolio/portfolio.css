@@ -89,7 +89,7 @@ body.ready .line>span{transform:none;opacity:1}
 .ld__bg{position:absolute;inset:0;background:radial-gradient(38% 55% at 0% 72%,rgba(164,85,44,.26),transparent 70%),radial-gradient(40% 58% at 100% 70%,rgba(196,176,176,.16),transparent 72%),
   radial-gradient(70% 60% at 50% 0%,rgba(107,92,92,.3),transparent 70%),#0D0C0C;transition:transform .85s cubic-bezier(.76,0,.24,1)}
 .loader.out .ld__bg{transform:translateY(-100%)}
-.ld__stack{--w:min(76vw,26rem);--h:calc(var(--w) * .27);--step:calc(var(--h) * .6);position:absolute;left:50%;top:47%;width:var(--w);height:calc(var(--h) + 5 * var(--step));translate:-50% -50%}
+.ld__stack{--w:min(76vw,26rem);--h:calc(var(--w) * .27);--step:calc(var(--h) * .6);position:absolute;left:50%;top:47%;width:var(--w);height:calc(var(--h) + 4 * var(--step));translate:-50% -50%}
 @media (max-width:639.98px){.ld__stack{--w:min(78vw,20rem)}}
 .ld__pill{position:absolute;left:0;top:calc(var(--k) * var(--step));width:100%;height:var(--h);border-radius:999px;z-index:var(--k);
   display:flex;align-items:flex-start;padding:calc(var(--h) * .2) 0 0 calc(var(--w) * .16);font-size:max(11px,calc(var(--w) * .036));font-weight:500;letter-spacing:.02em;
@@ -527,12 +527,6 @@ html[data-mode="dark"] .hero{box-shadow:0 1px 0 rgba(232,228,224,.08),0 1.75rem 
 
 .doors__row{--gap:1.5rem;position:relative;z-index:2;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--gap);align-items:end;width:100%;transition:transform .8s cubic-bezier(.65,0,.35,1)}
 @media (min-width:1024px){.doors__row{--gap:3rem}}
-/* the fifth door (Photography) waits just past the end of the wall; the menu slides the wall along to it */
-.unit.unit--secret{position:absolute;bottom:0;--slot:calc((100% - 3 * var(--gap)) / 4);width:min(17.5rem,calc((100svh - 19.5rem) / 2.25),var(--slot));
-  left:calc(100% + var(--gap) + (var(--slot) - min(17.5rem,calc((100svh - 19.5rem) / 2.25),var(--slot))) / 2);visibility:hidden;opacity:0;
-  transition:opacity .6s ease .2s,visibility 0s linear .8s}
-.doors.reveal .doors__row{transform:translateX(calc(-1 * ((100% - 3 * var(--gap)) / 4 + var(--gap))))}
-.doors.reveal .unit.unit--secret{visibility:visible;opacity:1;transition:opacity .6s ease .15s,visibility 0s}
 .doors__row::after{content:"";position:absolute;left:-50vw;right:-50vw;bottom:0;height:1.5rem;z-index:-1;
   background:linear-gradient(180deg,rgba(255,255,255,.55) 0,rgba(255,255,255,.55) 1px,rgba(0,0,0,.06) 2px,transparent 4px,transparent 7px,rgba(0,0,0,.05) 8px,rgba(255,255,255,.25) 9px,transparent 11px,rgba(0,0,0,.08) 100%),var(--base);
   box-shadow:0 -1px 0 rgba(0,0,0,.07),0 -.5rem .9rem -.45rem rgba(0,0,0,.16)}
@@ -721,8 +715,6 @@ html:not([data-mode="dark"]) .spill{mix-blend-mode:normal;background:linear-grad
     padding-top:2rem;margin-top:-1rem;transition:none;will-change:transform}
   .doors__row::after{left:0;right:auto;width:700vw}
   .unit{flex:0 0 var(--uw);max-width:none}
-  .unit.unit--secret{position:relative;left:auto;bottom:auto;width:auto;display:none;visibility:visible;opacity:1}
-  .doors.reveal .unit.unit--secret{display:block}
   .unit::before{display:none}
   .dinfo{position:relative;left:auto!important;top:auto!important;width:auto!important;max-width:100%;margin:.9rem 0 0;padding-top:1rem;border-top:1px solid rgba(var(--fg-rgb),.1);
     text-align:left;min-height:10.5rem;opacity:1;transform:none}
