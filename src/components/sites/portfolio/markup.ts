@@ -320,16 +320,68 @@ ${c.timeline.map(chapter).join("\n")}
   <div class="modal__panel" id="mPanel">
     <button class="x-btn" id="mClose" aria-label="Close"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4l16 16M20 4 4 20"/></svg></button>
     <div id="mForm">
-      <div class="mhead"><p>Hire me</p><h2 id="mTitle">Tell me what you need built.</h2></div>
-      <form class="mform" id="reqForm" name="contact" method="POST" action="/">
+      <div class="mhead"><p>Hire me</p><h2 id="mTitle">Tell me what you need built.</h2><small class="qz__min">Five quick questions.</small></div>
+      <!-- a short questionnaire, one question at a time; it ends by opening an email to me with the answers -->
+      <form class="mform" id="reqForm" name="contact" method="POST" action="/" novalidate>
         <input type="hidden" name="form-name" value="contact">
+        <input type="hidden" name="subject" id="f-subject" value="New enquiry">
+        <input type="hidden" name="fit" id="f-fit">
+        <input type="hidden" name="budget_label" id="f-budget-label">
         <p class="mform__hp" aria-hidden="true"><label>Leave this empty <input name="company" tabindex="-1" autocomplete="off"></label></p>
-        <label for="f-name"><span>Name</span><input id="f-name" name="name" type="text" required maxlength="80" placeholder="Your name" autocomplete="name"></label>
-        <label for="f-email"><span>Email</span><input id="f-email" name="email" type="email" required maxlength="120" placeholder="you@company.com" autocomplete="email"></label>
-        <label for="f-phone"><span>Phone</span><input id="f-phone" name="phone" type="tel" required maxlength="20" minlength="7" pattern="[\d\s\-\+\(\)]{7,20}" placeholder="+91 98765 43210" autocomplete="tel" title="Phone number with country code"></label>
-        <label for="f-project"><span>What do you need?</span><textarea id="f-project" name="project" rows="4" required maxlength="1500" placeholder="Describe the work you'd like done — scope, timeline and budget."></textarea></label>
+        <div class="qz__top" aria-hidden="true"><span id="qzStep">1 of 5</span><span class="qz__bar"><i id="qzBar"></i></span></div>
+
+        <fieldset class="qz" data-step="1">
+          <legend tabindex="-1">What do you need?</legend>
+          <label class="qc"><input type="radio" name="service" value="Website or web app"><span>Website or web app</span></label>
+          <label class="qc"><input type="radio" name="service" value="iOS or mobile app"><span>iOS or mobile app</span></label>
+          <label class="qc"><input type="radio" name="service" value="UI/UX design"><span>UI/UX design for a product</span></label>
+          <label class="qc"><input type="radio" name="service" value="Brand or graphic design"><span>Brand or graphic design</span></label>
+          <label class="qc"><input type="radio" name="service" value="Photography"><span>Photography</span></label>
+          <label class="qc qc--q"><input type="radio" name="service" value="question"><span>I have a question about this website</span></label>
+        </fieldset>
+
+        <fieldset class="qz" data-step="2" hidden>
+          <legend tabindex="-1">What's your budget for this project?</legend>
+          <div class="cur" role="radiogroup" aria-label="Currency">
+            <label><input type="radio" name="currency" value="USD"><span>USD $</span></label>
+            <label><input type="radio" name="currency" value="GBP"><span>GBP £</span></label>
+            <label><input type="radio" name="currency" value="INR"><span>INR ₹</span></label>
+          </div>
+          <label class="qc"><input type="radio" name="budget" value="under"><span data-b="0">Under ₹45,000</span></label>
+          <label class="qc"><input type="radio" name="budget" value="1"><span data-b="1">₹45,000 – ₹1.25 lakh</span></label>
+          <label class="qc"><input type="radio" name="budget" value="2"><span data-b="2">₹1.25 – ₹4 lakh</span></label>
+          <label class="qc"><input type="radio" name="budget" value="3"><span data-b="3">₹4 lakh or more</span></label>
+        </fieldset>
+
+        <fieldset class="qz" data-step="3" hidden>
+          <legend tabindex="-1">When do you want to start?</legend>
+          <label class="qc"><input type="radio" name="timeline" value="Within a month"><span>Within a month</span></label>
+          <label class="qc"><input type="radio" name="timeline" value="In 1 to 3 months"><span>In 1 to 3 months</span></label>
+          <label class="qc"><input type="radio" name="timeline" value="Flexible"><span>I'm flexible</span></label>
+          <label class="qc"><input type="radio" name="timeline" value="Just exploring"><span>Just exploring for now</span></label>
+        </fieldset>
+
+        <fieldset class="qz" data-step="4" hidden>
+          <legend tabindex="-1">Who is this for?</legend>
+          <label class="qc"><input type="radio" name="client_type" value="Established business"><span>An established business</span></label>
+          <label class="qc"><input type="radio" name="client_type" value="Startup"><span>A startup</span></label>
+          <label class="qc"><input type="radio" name="client_type" value="Agency"><span>An agency, for one of its clients</span></label>
+          <label class="qc"><input type="radio" name="client_type" value="Personal project"><span>A personal project</span></label>
+        </fieldset>
+
+        <fieldset class="qz" data-step="5" hidden>
+          <legend tabindex="-1">Last step: how do I reach you?</legend>
+          <label for="f-name"><span>Name</span><input id="f-name" name="name" type="text" required maxlength="80" placeholder="Your name" autocomplete="name"></label>
+          <label for="f-email"><span>Work email</span><input id="f-email" name="email" type="email" required maxlength="120" placeholder="you@company.com" autocomplete="email"></label>
+          <label for="f-phone"><span>Phone</span><input id="f-phone" name="phone" type="tel" required maxlength="20" minlength="7" pattern="[\\d\\s\\-\\+\\(\\)]{7,20}" placeholder="+91 98765 43210" autocomplete="tel" title="Phone number with country code"></label>
+          <label for="f-site"><span>Company or website <em>(optional)</em></span><input id="f-site" name="website" type="text" maxlength="160" placeholder="northwind.studio" autocomplete="organization"></label>
+          <label for="f-project"><span>About the project</span><textarea id="f-project" name="project" rows="4" required minlength="40" maxlength="1500" placeholder="What are you building, and what should it achieve? Links help."></textarea></label>
+        </fieldset>
+
+        <p class="qz__err" id="qzErr" role="alert"></p>
         <div class="mform__bot">
-          <small>I reply within one business day.</small>
+          <button type="button" class="qz__back" id="mBack" hidden>Back</button>
+          <small id="mReply">I reply within one business day.</small>
           <button type="submit" class="pill pill--dark pill--arrow" id="mSend">
             <span class="pill__in" data-h="s 1 1.04" data-hs="320 18" data-ht=".pill"><span id="mSendLbl">Write the email</span>
               <span class="pill__badge"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-h="x 0 2|y 0 -2" data-hs="320 18" data-ht=".pill"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
@@ -344,6 +396,14 @@ ${c.timeline.map(chapter).join("\n")}
       <p id="mOkP">Your email app has opened with your message ready to go. Press send there and I'll reply within one business day.</p>
       <p class="msuccess__alt">Email app didn't open? Write to <a data-mail href="#contact">my email</a>.</p>
       <button class="pill pill--dark" id="mDone"><span class="pill__in" data-h="s 1 1.04" data-hs="320 18" data-ht=".pill">Close</span></button>
+    </div>
+    <div class="msuccess" id="mStop" role="status" aria-live="polite" hidden>
+      <h2 id="mStopT" tabindex="-1">Thanks for asking</h2>
+      <p id="mStopP"></p>
+      <div class="qz__stopbtns">
+        <button type="button" class="qz__back" id="mStopBack">Change my answer</button>
+        <button class="pill pill--dark" id="mStopClose"><span class="pill__in" data-h="s 1 1.04" data-hs="320 18" data-ht=".pill">Close</span></button>
+      </div>
     </div>
   </div>
 </div>

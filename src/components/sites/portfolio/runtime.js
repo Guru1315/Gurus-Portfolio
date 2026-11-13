@@ -142,15 +142,15 @@ const CONTACT_EMAIL = cfg.email;   // where project requests go (assembled here 
 document.querySelectorAll('[data-mail]').forEach(a => { a.href = 'mailto:' + CONTACT_EMAIL; a.textContent = CONTACT_EMAIL; });
 const modal = $('#modal'), form = $('#reqForm');
 let lastFocus = null;
-function openModal(){ lastFocus = document.activeElement; openLayer(modal, closeModal); setTimeout(() => $('#f-name')?.focus({ preventScroll:true }), 120); }
+function openModal(){ lastFocus = document.activeElement; openLayer(modal, closeModal); setTimeout(() => qzFocus(), 120); }
 let lastInput = 'mouse';
 addEventListener('pointerdown', () => { lastInput = 'mouse'; }, true);
-addEventListener('keydown', e => { if (e.key === 'Tab' || e.key === 'Enter' || e.key === ' ') lastInput = 'key'; }, true);
+addEventListener('keydown', e => { if (e.key === 'Tab' || e.key === 'Enter' || e.key === ' ' || e.key.startsWith('Arrow')) lastInput = 'key'; }, true);
 function closeModal(){
   closeLayer(modal, () => {
     // give focus back only to keyboard users, so a mouse click doesn't leave the nav item looking hovered
     if (lastInput === 'key') lastFocus?.focus?.({ preventScroll:true }); else document.activeElement?.blur?.();
-    setTimeout(() => { form.reset(); $('#mForm').hidden = false; $('#mSuccess').hidden = true; $('#mSendLbl').textContent = SEND_LABEL; }, 300);
+    setTimeout(() => { form.reset(); setCur(CUR0); qzGo(1); $('#mForm').hidden = false; $('#mSuccess').hidden = true; $('#mStop').hidden = true; }, 300);
   });
 }
 modal.addEventListener('click', closeModal);
@@ -159,13 +159,90 @@ $('#mClose').addEventListener('click', closeModal);
 $('#mDone').addEventListener('click', closeModal);
 // the form sends for real only on the live website (Netlify receives it); anywhere else it opens an email
 const FORM_LIVE = false   /* no form backend in this clone: requests open an email */;
-const SEND_LABEL = FORM_LIVE ? 'Send message' : 'Write the email';
-$('#mSendLbl').textContent = SEND_LABEL;
+const SEND_LABEL = FORM_LIVE ? 'Send enquiry' : 'Write the email';
+
+// ── the questionnaire: one question at a time, then an email to me with every answer filled in ──
+const STEPS = 5;
+// budget ranges per currency, in the order of the four choices (no minimum: every budget can carry on)
+const BUDGETS = {
+  USD: ['Under $500', '$500 – $1,500', '$1,500 – $5,000', '$5,000 or more'],
+  GBP: ['Under £400', '£400 – £1,200', '£1,200 – £4,000', '£4,000 or more'],
+  INR: ['Under ₹45,000', '₹45,000 – ₹1.25 lakh', '₹1.25 – ₹4 lakh', '₹4 lakh or more'],
+};
+const CUR0 = (() => { try { const z = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+  return /Calcutta|Kolkata/.test(z) ? 'INR' : /^Europe\/(London|Belfast|Guernsey|Jersey|Isle_of_Man)/.test(z) ? 'GBP' : 'USD'; } catch (e) { return 'USD'; } })();
+const budgetIndex = v => v === 'under' ? 0 : +v;   // the "under" choice is the lowest range
+let step = 1;
+const qzSteps = [...form.querySelectorAll('.qz')];
+function qzFocus(){ const s = qzSteps[step - 1]; (s.querySelector('.qc input:checked') || s.querySelector('.qc input') || s.querySelector('input'))?.focus({ preventScroll: true }); }
+function setCur(c){
+  const b = BUDGETS[c] || BUDGETS.USD;
+  form.querySelector(`input[name=currency][value=${c}]`).checked = true;
+  form.querySelectorAll('[data-b]').forEach(s => { s.textContent = b[+s.dataset.b]; });
+}
+function qzGo(n, focus){
+  step = n; $('#qzErr').textContent = '';
+  qzSteps.forEach((s, i) => { s.hidden = i !== n - 1; });
+  $('#qzStep').textContent = `${n} of ${STEPS}`;
+  $('#qzBar').style.width = (n / STEPS * 100) + '%';
+  $('#mBack').hidden = n === 1;
+  $('#mSendLbl').textContent = n === STEPS ? SEND_LABEL : 'Next';
+  if (focus) qzFocus();
+}
+function qzStop(title, text, backTo){
+  $('#mStopT').textContent = title; $('#mStopP').textContent = text;
+  $('#mStopBack').onclick = () => { $('#mStop').hidden = true; $('#mForm').hidden = false; qzGo(backTo, true); };
+  $('#mForm').hidden = true; $('#mStop').hidden = false; $('#mStopT').focus();
+}
+// returns true if this step's answer lets them carry on
+function qzCheck(){
+  const d = new FormData(form);
+  if (step === 1){
+    if (!d.get('service')) return $('#qzErr').textContent = 'Pick the option closest to what you need.', false;
+    if (d.get('service') === 'question'){ qzStop('This form is for hiring me',
+      'I keep it for client projects, so I can’t answer questions about how this site was made or general advice here. Thanks for stopping by, and for the interest in the work.', 1); return false; }
+  }
+  if (step === 2 && !d.get('budget')) return $('#qzErr').textContent = 'Choose a budget range.', false;
+  if (step === 3 && !d.get('timeline')) return $('#qzErr').textContent = 'Choose when you’d like to start.', false;
+  if (step === 4 && !d.get('client_type')) return $('#qzErr').textContent = 'Choose who the project is for.', false;
+  if (step === 5){
+    for (const el of qzSteps[4].querySelectorAll('input,textarea')){
+      if (!el.checkValidity()){
+        $('#qzErr').textContent = el.id === 'f-project' ? 'Tell me a little more about the project (at least a sentence or two).'
+          : el.id === 'f-phone' ? 'Add a phone number with its country code.' : el.id === 'f-email' ? 'Check your email address.' : 'Fill in your name.';
+        el.focus(); return false;
+      }
+    }
+  }
+  return true;
+}
+setCur(CUR0); qzGo(1);
+form.querySelectorAll('input[name=currency]').forEach(r => r.addEventListener('change', () => setCur(r.value)));
+// a choice moves straight on to the next question
+form.addEventListener('change', e => {
+  const n = e.target.name;
+  if (!['service', 'budget', 'timeline', 'client_type'].includes(n)) return;
+  if (lastInput !== 'mouse') return;   // arrow keys move between choices; keyboard users go on with Enter
+  setTimeout(() => { if (qzCheck()) qzGo(step + 1, true); }, 180);
+});
+form.addEventListener('input', () => { $('#qzErr').textContent = ''; });
+$('#mBack').addEventListener('click', () => qzGo(Math.max(1, step - 1), true));
+$('#mStopClose').addEventListener('click', closeModal);
+
 form.addEventListener('submit', e => {
   e.preventDefault();
-  const d = new FormData(form), name = (d.get('name') || '').trim(), mail = (d.get('email') || '').trim(), phone = (d.get('phone') || '').trim(), proj = (d.get('project') || '').trim();
-  const subject = `Service enquiry from ${name}`;
-  const body = `Hi ${cfg.firstName},\n\n${proj}\n\n— ${name}\n${mail}\n${phone}`;
+  if (!qzCheck()) return;
+  if (step < STEPS){ qzGo(step + 1, true); return; }
+  const g = k => (new FormData(form).get(k) || '').toString().trim();
+  const tier = budgetIndex(g('budget')), budget = BUDGETS[g('currency')][tier];
+  // a quick read on the lead for my inbox: a bigger budget, a real business and a near start come first
+  const fit = (tier >= 2 ? 2 : tier >= 1 ? 1 : 0) + (g('client_type') === 'Personal project' ? 0 : 1) + (g('timeline') === 'Just exploring' ? 0 : 1);
+  const grade = fit >= 4 ? 'A' : fit === 3 ? 'B' : 'C';
+  $('#f-fit').value = grade; $('#f-budget-label').value = budget;
+  $('#f-subject').value = `[${grade}] ${g('service')} · ${budget} · ${g('name')}`;
+  const d = new FormData(form), name = g('name'), mail = g('email'), phone = g('phone'), proj = g('project');
+  const subject = $('#f-subject').value;
+  const body = `Hi ${cfg.firstName},\n\n${proj}\n\nService: ${g('service')}\nBudget: ${budget}\nStart: ${g('timeline')}\nFor: ${g('client_type')}${g('website') ? '\nCompany: ' + g('website') : ''}\n\n— ${name}\n${mail}\n${phone}`;
   const viaMail = () => {
     location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     $('#mOkT').textContent = 'Almost there';

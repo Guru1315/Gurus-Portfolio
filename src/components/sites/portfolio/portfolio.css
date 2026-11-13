@@ -894,3 +894,36 @@ body{margin:0}
 .totop:focus-visible{outline:2px solid #C4B0B0;outline-offset:3px}
 @media (max-width:767.98px){.totop{width:3rem;height:3rem}}
 @media (prefers-reduced-motion:reduce){.totop,.totop svg.ar{transition:opacity .2s ease,visibility 0s linear .2s}}
+
+/* the Hire me questionnaire: one question at a time, ported from the source */
+.qz__min{font-size:.8125rem;color:rgba(var(--fg-rgb),.62)}
+.qz__min b{color:var(--foreground);font-weight:600}
+.qz__top{display:flex;align-items:center;gap:.75rem;font-size:.75rem;font-weight:600;color:rgba(var(--fg-rgb),.55);font-variant-numeric:tabular-nums}
+.qz__bar{flex:1;height:.25rem;border-radius:99px;background:var(--line);overflow:hidden}
+.qz__bar i{display:block;height:100%;width:20%;background:var(--foreground);border-radius:inherit;transition:width .45s var(--e-spring)}
+.qz{border:0;margin:0;padding:0;min-width:0;display:flex;flex-direction:column;gap:.5rem}
+.qz[hidden]{display:none}
+.qz legend{padding:0;margin-bottom:.75rem;font-size:1.125rem;font-weight:600;letter-spacing:-.01em;outline:none}
+.mform label.qc{position:relative;flex-direction:row;align-items:center;gap:.75rem;min-height:3rem;padding:.7rem 1rem;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--field);cursor:pointer;transition:border-color .2s,background .2s,box-shadow .2s}
+.mform label.qc:hover{border-color:rgba(var(--fg-rgb),.3)}
+.mform label.qc>span{font-size:.9375rem;font-weight:500;text-transform:none;letter-spacing:0;color:var(--foreground)}
+.mform label.qc::before{content:"";flex:none;width:1.125rem;height:1.125rem;border-radius:50%;border:1.5px solid rgba(var(--fg-rgb),.45);box-sizing:border-box;transition:border .2s}
+.mform label.qc input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
+.mform label.qc:has(input:checked){border-color:var(--foreground);background:var(--panel);box-shadow:0 0 0 1px var(--foreground)}
+.mform label.qc:has(input:checked)::before{border:5px solid var(--foreground)}
+.mform label.qc:has(input:focus-visible){outline:2px solid var(--accent);outline-offset:2px}
+.mform label.qc--q>span{color:rgba(var(--fg-rgb),.7);font-weight:400}
+.mform .cur{display:flex;gap:.25rem;align-self:flex-start;padding:.25rem;margin-bottom:.25rem;border-radius:99px;background:var(--surface)}
+.mform .cur label{position:relative;flex-direction:row;gap:0}
+.mform .cur input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
+.mform .cur span{display:inline-flex;align-items:center;min-height:2.25rem;padding:0 .9rem;border-radius:99px;font-size:.8125rem;font-weight:600;text-transform:none;letter-spacing:0;color:rgba(var(--fg-rgb),.62);cursor:pointer;transition:background .2s,color .2s}
+.mform .cur input:checked+span{background:var(--panel);color:var(--foreground);box-shadow:0 1px 3px rgba(0,0,0,.12)}
+.mform .cur input:focus-visible+span{outline:2px solid var(--accent);outline-offset:1px}
+.qz__err{margin:0;min-height:1.25rem;font-size:.8125rem;font-weight:500;color:#B3412F}
+html[data-mode="dark"] .qz__err{color:#F08A78}
+.qz__err:empty{min-height:0}
+.qz__back{min-height:2.75rem;padding:0 1.1rem;border-radius:99px;border:1px solid var(--line);font-size:.875rem;font-weight:600;color:var(--foreground);transition:background .2s}
+.qz__back:hover{background:var(--surface)}
+.qz__back[hidden]{display:none}
+.qz__stopbtns{display:flex;gap:.6rem;flex-wrap:wrap;justify-content:center}
+.mform label>span em{font-style:normal;text-transform:none;letter-spacing:0;opacity:.75}

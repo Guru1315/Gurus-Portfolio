@@ -66,8 +66,9 @@ export default function LegalPage() {
       <h3>When you contact me</h3>
       <p>
         The &ldquo;Hire me&rdquo; form doesn&apos;t send anything itself. When you press &ldquo;Write the email&rdquo;, it opens your own email
-        app with your name, email address, phone number and message filled in, addressed to me. Nothing is sent until you press send there; the
-        message then travels through your email provider to my inbox (Gmail, run by Google).
+        app with a message to me filled in: your name, email address, phone number, company or website (if you give one), your answers to its
+        questions (the kind of work, budget range, start date and who the project is for) and your message. Nothing is sent until you press send
+        there; the message then travels through your email provider to my inbox (Gmail, run by Google).
       </p>
       <p>
         I ask for your phone number so I can reach you quickly about your project. I will only call or message you about the enquiry you send,
@@ -92,21 +93,6 @@ export default function LegalPage() {
       <p>
         You can ask me what personal data I hold about you, ask me to correct it, or ask me to delete it, by emailing me. I&apos;ll respond within
         30 days. This notice is written with India&apos;s Digital Personal Data Protection Act, 2023 and the EU and UK GDPR in mind.
-      </p>
-
-      <h2>Work shown on this site</h2>
-      <p>
-        The projects shown here were designed and built by me. Several are concept and fan sites for well-known brands, products and films.
-        Their names, logos, products and imagery belong to their respective owners, and those projects are personal concept work: they were not
-        commissioned by, and are not affiliated with or endorsed by, those companies. If you own any of this material and would like it changed or
-        removed, email me and I&apos;ll act on it promptly.
-      </p>
-      <p>
-        The layout and interactions of this portfolio are adapted from{" "}
-        <a href="https://therishithakor.com" target="_blank" rel="noopener noreferrer">
-          Rishi Thakor&apos;s portfolio
-        </a>
-        .
       </p>
 
       <h2>Credits &amp; licences</h2>
