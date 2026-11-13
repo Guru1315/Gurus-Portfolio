@@ -624,6 +624,8 @@ html[data-mode="dark"]{--room:#050505;--room-sh:rgba(0,0,0,.85)}
 .wallv iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block;visibility:hidden}
 .wallv iframe{opacity:0;transition:opacity .7s ease}
 .wallv.on iframe.cur{visibility:visible;opacity:1}
+/* the room you walked into sits in a softly rounded frame, as on the source (where its form's .cur style rounds it) */
+.wallv iframe.cur{padding:.25rem;border-radius:99px;background:var(--surface)}
 .veil--wall{background:#E8E4E0;width:100vw}
 html[data-mode="dark"] .veil--wall{background:#1A1818}
 .vcell{position:absolute;left:0;top:0;border-radius:6px;overflow:hidden;background:center/cover no-repeat}
