@@ -14,6 +14,8 @@ const eslintConfig = defineConfig([
     "next-env.d.ts",
     // Vendored third-party code served as static files (three.js for the 3D ability card).
     "public/vendor/**",
+    // Supabase Edge Functions run on Deno with their own imports; they are not part of the Next.js app.
+    "supabase/**",
   ]),
 ]);
 
