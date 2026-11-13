@@ -141,7 +141,7 @@ export function Room({ room }: { room: RoomInfo }) {
                       ))}
                     </ul>
                     <a className="live" href={p.url} target="_blank" rel="noopener noreferrer">
-                      Visit live site {ARROW}
+                      {p.linkLabel ?? "Visit live site"} {ARROW}
                     </a>
                   </div>
                   <div className={`stage${phone ? " ph" : ""}`} aria-hidden="true">

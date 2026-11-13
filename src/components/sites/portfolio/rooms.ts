@@ -9,6 +9,8 @@ export type Project = {
   desc: string;
   tags: string[];
   url: string;
+  /** Button text for the link; defaults to "Visit live site". */
+  linkLabel?: string;
   /** Tall screenshot that scrolls on the monitor or phone screen. */
   shot: string;
   /** App icon shown beside the label (apps only). */
@@ -126,6 +128,39 @@ export const ROOMS: RoomInfo[] = [
         url: "https://kaapi-kadai-sail22.vercel.app",
         shot: shot("app-kaapi"),
         icon: shot("icon-kaapi"),
+      },
+      {
+        kind: "Web app · AI productivity",
+        title: "PlanAI",
+        sub: "AI personal planner",
+        desc: "Describe a goal in plain English, like an exam in 18 days, and it builds a day-by-day plan around the hours you're free, with a dashboard, study streak and auto-rescheduling for missed sessions. Uses Gemini, or a built-in planner with no key.",
+        tags: ["Gemini AI", "Planning", "JavaScript"],
+        url: "https://github.com/Guru1315/AI-Personal-Agent",
+        linkLabel: "View on GitHub",
+        shot: shot("app-planai"),
+        icon: shot("icon-planai"),
+      },
+      {
+        kind: "AI agents · Automation",
+        title: "Develop Team",
+        sub: "Multi-agent software dev team",
+        desc: "Give it a feature request and a team of AI agents (product manager, architect, developer and tester) writes the spec, design, code and tests, with a supervisor looping fixes until it passes. Built in Flowise and n8n, with a live web console.",
+        tags: ["Multi-agent AI", "n8n & Flowise", "Supabase"],
+        url: "https://github.com/Guru1315/Develop-Team",
+        linkLabel: "View on GitHub",
+        shot: shot("app-devteam"),
+        icon: shot("icon-devteam"),
+      },
+      {
+        kind: "AI agent · Investigation",
+        title: "AI Fraud Investigation",
+        sub: "Built on the open-source Surelock Homes",
+        desc: "Pick a ZIP code and the agent checks licensed childcare providers against public records, comparing licensed capacity with the building's size, Street View and business listings, and flags anomalies for further review.",
+        tags: ["AI agent", "Public data", "Python"],
+        url: "https://github.com/Guru1315/AI-Fraud-Investigation",
+        linkLabel: "View on GitHub",
+        shot: shot("app-fraud"),
+        icon: shot("icon-fraud"),
       },
     ],
   },
