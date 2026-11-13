@@ -29,6 +29,8 @@ const BATT = (
   </svg>
 );
 
+const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
 // Runs before first paint: behind a door the room waits under its veil until the homepage says you walked in.
 const bootScript = `if(/[?&]embed\\b/.test(location.search)&&window.parent!==window)document.documentElement.classList.add('embed')`;
 
@@ -73,6 +75,8 @@ export function Room({ room }: { room: RoomInfo }) {
           <div className="rn__clock" aria-label="Local time">
             <span>Local time</span>
             <b data-ftime>—</b>
+            <span className="d">·</span>
+            <span className="d" data-fdate />
           </div>
           <button className="rn__menu" id="rnMenu" aria-expanded="false" aria-controls="rnPanel">
             <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
@@ -115,9 +119,19 @@ export function Room({ room }: { room: RoomInfo }) {
               <article key={p.title} className={`card${i % 2 ? " flip" : ""}`} style={{ "--i": i } as React.CSSProperties} aria-labelledby={`p${i}`}>
                 <div className={`card__in${phone ? " ph" : ""}`}>
                   <div className="card__info">
-                    <p className="card__meta">
-                      <span>{p.kind}</span>
-                    </p>
+                    {p.icon ? (
+                      <div className="app">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src={p.icon} alt="" width={58} height={58} decoding="async" loading={i < 1 ? "eager" : "lazy"} />
+                        <p className="card__meta">
+                          <span>{p.kind}</span>
+                        </p>
+                      </div>
+                    ) : (
+                      <p className="card__meta">
+                        <span>{p.kind}</span>
+                      </p>
+                    )}
                     <h2 id={`p${i}`}>{p.title}</h2>
                     <p className="sub">{p.sub}</p>
                     <p className="desc">{p.desc}</p>
@@ -336,6 +350,10 @@ function initRoom() {
     const d = new Date(), h = d.getHours();
     document.querySelectorAll("[data-ftime]").forEach((e) => (e.textContent = `${h % 12 || 12}:${String(d.getMinutes()).padStart(2, "0")}${h < 12 ? "am" : "pm"}`));
     document.querySelectorAll("[data-fyear]").forEach((e) => (e.textContent = String(d.getFullYear())));
+    const short = matchMedia("(max-width: 767.98px)").matches;
+    document
+      .querySelectorAll("[data-fdate]")
+      .forEach((e) => (e.textContent = short ? `${d.getDate()} ${MONTHS[d.getMonth()].slice(0, 3)}` : `${d.getDate()} ${MONTHS[d.getMonth()]}, ${d.getFullYear()}`));
   };
   tick();
   const clock = setInterval(tick, 20000);

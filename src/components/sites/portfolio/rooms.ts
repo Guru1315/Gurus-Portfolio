@@ -11,6 +11,8 @@ export type Project = {
   url: string;
   /** Tall screenshot that scrolls on the monitor or phone screen. */
   shot: string;
+  /** App icon shown beside the label (apps only). */
+  icon?: string;
 };
 
 export type RoomInfo = {
@@ -103,6 +105,7 @@ export const ROOMS: RoomInfo[] = [
         tags: ["AI", "Citations", "Study tools"],
         url: "https://mindlab-ai-psi.vercel.app",
         shot: shot("app-mindlab"),
+        icon: shot("icon-mindlab"),
       },
       {
         kind: "Web app · AI",
@@ -112,6 +115,7 @@ export const ROOMS: RoomInfo[] = [
         tags: ["Gemini AI", "Python", "Streamlit"],
         url: "https://ai-chatbot-pvj39rjn32zxtyxtlqrehq.streamlit.app/",
         shot: shot("app-chatbot"),
+        icon: shot("icon-chatbot"),
       },
       {
         kind: "Web app · Food & drink",
@@ -121,6 +125,7 @@ export const ROOMS: RoomInfo[] = [
         tags: ["3D", "Accounts & login", "Retro brand look"],
         url: "https://kaapi-kadai-sail22.vercel.app",
         shot: shot("app-kaapi"),
+        icon: shot("icon-kaapi"),
       },
     ],
   },

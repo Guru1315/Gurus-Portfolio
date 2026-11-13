@@ -334,6 +334,7 @@ html[data-mode="dark"] .stage.ph::after{background:radial-gradient(closest-side,
   .card__in.ph{--w:clamp(150px,calc((100svh - var(--nav-h,64px) - 370px) * .47),230px)}
   .phone,.card.flip .phone{transform:rotateY(-14deg) rotateX(4deg) rotateZ(.6deg)}
   .card.flip .phone__body::before{right:0;left:auto;transform-origin:100% 50%;transform:rotateY(-90deg)}
+  .app{margin-bottom:10px;gap:12px}.app img{width:42px;height:42px;border-radius:10px}
 }
 
 /* a room with no projects yet */
