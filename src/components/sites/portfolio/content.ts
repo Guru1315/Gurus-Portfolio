@@ -61,7 +61,7 @@ export const site: SiteContent = {
     {
       year: "2024",
       when: "Aug 2024 — Now",
-      title: "B.Tech CSE (Artificial Intelligence)",
+      title: "B.Tech in Artificial Intelligence",
       org: "Saveetha University (SIMATS)",
       points: [
         "Four years of computer science: where it all started, with code in the classroom and design on the side.",
