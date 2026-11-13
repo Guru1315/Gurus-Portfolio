@@ -10,7 +10,7 @@ The Graphic Design room's concept campaigns (Aranya Living, Kaelum Springs, Saan
 | Living Room | Jeremy Levine Design | CC BY 2.0 | https://www.flickr.com/photos/25186605@N04/3640110011 |
 | Living Room | Jeremy Levine Design | CC BY 2.0 | https://www.flickr.com/photos/25186605@N04/4329977835 |
 | two-story-home-lit-windows (Creative Commons) | vcmxnajg1 | CC BY 2.0 | https://www.flickr.com/photos/200871378@N03/53833977372 |
-| Edward Hopper - Milano, Palazzo Reale | br1dotcom | CC BY 2.0 | https://www.flickr.com/photos/21394564@N04/4008962387 |
+| Modern Luxury Living Room Interior / Loft Apartment Architecture | Foto Miki Digital | CC PDM 1.0 | https://www.flickr.com/photos/96511847@N04/9202816086 |
 | Free modern kitchen interior image | Unknown | CC CC0 1.0 | https://www.rawpixel.com/image/5906894/photo-image-public-domain-kitchen-interior |
 | Sustainable Kitchen | Jeremy Levine Design | CC BY 2.0 | https://www.flickr.com/photos/25186605@N04/3240119298 |
 | Red Box at Night | Jeremy Levine Design | CC BY 2.0 | https://www.flickr.com/photos/25186605@N04/3640920662 |
