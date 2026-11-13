@@ -166,6 +166,15 @@ export const ROOMS: RoomInfo[] = [
         shot: shot("ui-moana"),
       },
       {
+        kind: "Visual story · Live",
+        title: "Avatar",
+        sub: "Film saga · scroll-driven 3D journey",
+        desc: "A cinematic journey through Pandora in five chapters: the avatar turns its head to follow your mouse, and your scroll scrubs a pinned 3D sequence through each chapter before a living gallery.",
+        tags: ["3D image sequence", "Scroll animation", "Graphic editing"],
+        url: "https://guru-avatar-editing.vercel.app/",
+        shot: shot("ui-avatar"),
+      },
+      {
         kind: "3D showcase · Live",
         title: "Aerion GT",
         sub: "Sports car · 3D product page",
