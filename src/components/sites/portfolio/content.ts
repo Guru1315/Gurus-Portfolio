@@ -41,11 +41,11 @@ export const site: SiteContent = {
     {
       year: "2026",
       when: "Jan 2026 — Jun 2026",
-      title: "Graphic designer",
-      org: "Himspring LLC",
+      title: "Web developer",
+      org: "Saveetha School of Engineering, Chennai",
       points: [
-        "Managed visual content across social media handles for real estate, luxury water bottle and clothing brands.",
-        "Designed social media creatives, stories and carousels in Adobe Illustrator, keeping every brand consistent across platforms.",
+        "Website development: design and develop responsive, interactive websites for college events, hackathons, technical symposiums and personal blogs using modern web technologies.",
+        "Team collaboration and deployment: work with team members using GitHub, React and Next.js to build projects, manage development tasks and deploy websites for real-world use.",
       ],
     },
     {
