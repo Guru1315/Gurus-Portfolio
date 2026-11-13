@@ -30,38 +30,43 @@ export const site: SiteContent = {
   timeline: [
     {
       year: "2026",
-      when: "Jan 2026 — Now",
+      when: "Oct 2026 — Now",
       title: "Independent freelancer",
       org: "Working for myself, remote-first",
-      points: ["Describe the kind of work you take on for clients.", "Add a second highlight here."],
+      points: [
+        "Websites, iOS apps, interfaces and brand creatives, carried from the first sketch to launch.",
+        "Working directly with clients, wherever they are.",
+      ],
+    },
+    {
+      year: "2026",
+      when: "Jan 2026 — Jun 2026",
+      title: "Graphic designer",
+      org: "Himspring LLC",
+      points: [
+        "Managed visual content across social media handles for real estate, luxury water bottle and clothing brands.",
+        "Designed social media creatives, stories and carousels in Adobe Illustrator, keeping every brand consistent across platforms.",
+      ],
     },
     {
       year: "2025",
-      when: "Jun 2025 — Dec 2025",
-      title: "Role title",
-      org: "Company name, City",
-      points: ["What you were responsible for.", "A result you are proud of."],
+      when: "Sep 2025 — Dec 2025",
+      title: "UI/UX designer",
+      org: "Quicko Pvt Ltd, Chennai",
+      points: [
+        "Designed website interfaces and user experiences in Figma, focused on usability, visual clarity and function.",
+        "Built no-code web pages and interactive financial tools in Framer, turning designs into working products.",
+      ],
     },
     {
       year: "2024",
-      when: "Jan 2024 — May 2025",
-      title: "Role title",
-      org: "Company name, City",
-      points: ["What you were responsible for.", "A result you are proud of."],
-    },
-    {
-      year: "2023",
-      when: "Jun 2023 — Dec 2023",
-      title: "Internship title",
-      org: "Company name · Remote",
-      points: ["What you worked on.", "What you learned."],
-    },
-    {
-      year: "2020",
-      when: "Jul 2020 — May 2024",
-      title: "Degree, Field of study",
-      org: "University name",
-      points: ["Where it all started.", "Projects or achievements from your studies."],
+      when: "Aug 2024 — Now",
+      title: "B.Tech CSE (Artificial Intelligence)",
+      org: "Saveetha University (SIMATS)",
+      points: [
+        "Four years of computer science: where it all started, with code in the classroom and design on the side.",
+        "With internships and real projects already under way.",
+      ],
     },
   ],
 };
