@@ -26,7 +26,7 @@ The Graphic Design room's concept campaigns (Aranya Living, Kaelum Springs, Saan
 | Army unveils RDECOM laboratory to improve agile acquisition process | U.S. Army Combat Capabilities Development Command | CC BY 2.0 | https://www.flickr.com/photos/34402227@N03/7447867664 |
 | student_ipad_school - 092 | flickingerbrad | CC BY 2.0 | https://www.flickr.com/photos/56155476@N08/6660040139 |
 | student_ipad_school - 123 | flickingerbrad | CC BY 2.0 | https://www.flickr.com/photos/56155476@N08/6660064021 |
-| The Camp Nou Stadium - Barcelona | Oh-Barcelona.com | CC BY 2.0 | https://www.flickr.com/photos/33831399@N04/3795281086 |
+| Senegal 1 - Cameroon 0 - Stade Léopold Sédar Senghor | Jeff Attaway | CC BY 2.0 | https://www.flickr.com/photos/33398364@N08/5562333854 |
 | Security cameras | futureatlas.com | CC BY 2.0 | https://www.flickr.com/photos/87913776@N00/8362638676 |
 | Security cameras | Soctech | CC BY 2.0 | https://www.flickr.com/photos/28902292@N00/102270156 |
 | glaciers - mountains - Alaska Canada- from Delta jet window | watts_photos | CC BY 2.0 | https://www.flickr.com/photos/126288307@N05/36135788725 |
