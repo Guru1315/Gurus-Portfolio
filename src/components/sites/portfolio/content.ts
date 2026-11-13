@@ -68,5 +68,15 @@ export const site: SiteContent = {
         "With internships and real projects already under way.",
       ],
     },
+    {
+      year: "2022",
+      when: "Jun 2022 — Mar 2024",
+      title: "Higher Secondary in Bio-Maths",
+      org: "Shepherds Matric Hr Sec School, Tirupattur, Tamil Nadu",
+      points: [
+        "Statistics and probability: mean, median, standard deviation, distributions and correlation, the ideas behind how machine-learning algorithms make predictions.",
+        "Linear algebra and calculus: matrices, vectors, derivatives and gradients, which explain how neural networks and deep learning models learn.",
+      ],
+    },
   ],
 };
