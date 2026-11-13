@@ -279,7 +279,7 @@ ${c.timeline.map(chapter).join("\n")}
       <div><h3>Navigate</h3><ul><li><a href="/" data-go="home">Home</a></li><li><a href="/#about" data-go="about">My story</a></li><li><button data-contact>Contact</button></li></ul></div>
       <div><h3>Status</h3><ul><li class="st">Available for work</li><li class="st">Remote-first, worldwide</li><li class="st">Local time <span data-ftime>—</span></li></ul></div>
     </div>
-    <div class="sf__bot"><span>© <span data-fyear>2026</span> ${esc(c.name)}.</span><button data-go="home">Back to top ↑</button></div>
+    <div class="sf__bot"><span>© <span data-fyear>2026</span> ${esc(c.name)}. Built by ${esc(c.firstName)}.</span><span class="sf__legal"><a href="/legal" target="_top">Privacy &amp; credits</a></span><button data-go="home">Back to top ↑</button></div>
   </div>
 </footer>
 </div>

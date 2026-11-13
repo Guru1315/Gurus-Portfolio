@@ -258,7 +258,12 @@ export function Room({ room }: { room: RoomInfo }) {
             </div>
             <div className="sf__bot">
               <span>
-                © <span data-fyear>2026</span> {site.name}.
+                © <span data-fyear>2026</span> {site.name}. Built by {site.firstName}.
+              </span>
+              <span className="sf__legal">
+                <a href="/legal" target="_top">
+                  Privacy &amp; credits
+                </a>
               </span>
               <button data-nav="top">Back to top ↑</button>
             </div>
