@@ -20,12 +20,12 @@ export function portfolioMarkup(c: SiteContent): string {
   <div class="ld__stack">
     <div class="ld__pill" style="--k:0;--c:#1F1C1C;--t:#E8E4E0;--dir:1"><span>${esc(c.name)}</span></div>
     <div class="ld__pill" style="--k:1;--c:#22304a;--t:#E8E4E0;--dir:-1"><span>Web development</span></div>
-    <div class="ld__pill" style="--k:2;--c:#4a3540;--t:#E8E4E0;--dir:1"><span>App development</span></div>
+    <div class="ld__pill" style="--k:2;--c:#4a3540;--t:#E8E4E0;--dir:1"><span>AI development</span></div>
     <div class="ld__pill" style="--k:3;--c:#7a8670;--t:#F3EEEC;--dir:-1"><span>UI/UX design</span></div>
     <div class="ld__pill" style="--k:4;--c:#a4552c;--t:#F3EEEC;--dir:1"><span>Graphic design</span></div>
   </div>
   <div class="ld__hud">
-    <div class="ld__top"><span><b>${esc(c.name)}</b> · Portfolio</span><span>Web · App · UI/UX · Graphic design</span></div>
+    <div class="ld__top"><span><b>${esc(c.name)}</b> · Portfolio</span><span>Web · AI · UI/UX · Graphic design</span></div>
     <div class="ld__bot">
       <p class="ld__num"><small>Opening up the work</small><span id="ldCount">000</span></p>
       <div class="ld__bar"><i></i></div>
@@ -40,7 +40,7 @@ export function portfolioMarkup(c: SiteContent): string {
       <ul class="nav">
         <li><button data-go="home" aria-current="page"><span data-h="y 0 -2|o .8 1" data-hs="320 22" data-ht="button">Home</span></button></li>
         <li><button data-door="0"><span data-h="y 0 -2|o .8 1" data-hs="320 22" data-ht="button">Web Development</span></button></li>
-        <li><button data-door="1"><span data-h="y 0 -2|o .8 1" data-hs="320 22" data-ht="button">App Development</span></button></li>
+        <li><button data-door="1"><span data-h="y 0 -2|o .8 1" data-hs="320 22" data-ht="button">AI Project Development</span></button></li>
         <li><button data-door="2"><span data-h="y 0 -2|o .8 1" data-hs="320 22" data-ht="button">UI/UX Design</span></button></li>
         <li><button data-door="3"><span data-h="y 0 -2|o .8 1" data-hs="320 22" data-ht="button">Graphic Design</span></button></li>
         <li><button data-go="about"><span data-h="y 0 -2|o .8 1" data-hs="320 22" data-ht="button">My story</span></button></li>
@@ -163,14 +163,14 @@ export function portfolioMarkup(c: SiteContent): string {
           </button>
         </li>
         <li class="unit" style="--i:1;--door:#4a3540;--door-dk:#3f2d37">
-          <button class="doorway" aria-label="Open the App Developer door">
+          <button class="doorway" aria-label="Open the AI Developer door">
             <span class="casing"></span>
             <span class="opening">
               <span class="room"></span>
               <span class="spill"></span>
               <span class="door">
                 <span class="door__flute"></span>
-                <span class="plate">App Developer</span>
+                <span class="plate">AI Developer</span>
                 <span class="handle"><span class="handle__lever"></span><span class="handle__lock"></span></span>
                 <span class="door__shade"></span>
                 <span class="leak"></span>
@@ -261,7 +261,7 @@ ${c.timeline.map(chapter).join("\n")}
       <button class="sf__ghost" data-go="works">See my work</button>
     </div>
     <div class="sf__cols">
-      <div><h3>Work</h3><ul class="work"><li><a href="/web-developer" data-door="0">Web Development</a></li><li><a href="/app-developer" data-door="1">App Development</a></li><li><a href="/ui-ux-designer" data-door="2">UI/UX Design</a></li><li><a href="/graphic-designer" data-door="3">Graphic Design</a></li></ul></div>
+      <div><h3>Work</h3><ul class="work"><li><a href="/web-developer" data-door="0">Web Development</a></li><li><a href="/app-developer" data-door="1">AI Project Development</a></li><li><a href="/ui-ux-designer" data-door="2">UI/UX Design</a></li><li><a href="/graphic-designer" data-door="3">Graphic Design</a></li></ul></div>
       <div><h3>Navigate</h3><ul><li><a href="/" data-go="home">Home</a></li><li><a href="/#about" data-go="about">My story</a></li><li><button data-contact>Contact</button></li></ul></div>
       <div><h3>Status</h3><ul><li class="st">Available for work</li><li class="st">Remote-first, worldwide</li><li class="st">Local time <span data-ftime>—</span></li></ul></div>
     </div>

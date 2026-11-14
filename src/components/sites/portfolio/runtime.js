@@ -123,7 +123,7 @@ function closeLayer(el, after){
   setTimeout(() => { el.hidden = true; el.classList.remove('closing'); startScroll(); after?.(); }, 460);
 }
 // nav menu
-const NAV = [['Home','home'],['Web Development',0],['App Development',1],['UI/UX Design',2],['Graphic Design',3],['My story','about'],['Contact',null]];
+const NAV = [['Home','home'],['Web Development',0],['AI Project Development',1],['UI/UX Design',2],['Graphic Design',3],['My story','about'],['Contact',null]];
 const navm = $('#navm');
 $('#navList').innerHTML = NAV.map(([l, id], i) =>
   `<li><button class="navm__item" style="--d:${i * 45 + 80}ms" data-i="${i}"><small>0${i + 1}</small><span>${l}</span></button></li>`).join('');
@@ -290,7 +290,7 @@ bindHovers();
 
 /* ---------- Flip calendar: skills on an endless desk-calendar flip ---------- */
 (function flipCalendar(){
-  const SKILLS = ['Web Developer', 'App Developer', 'UI/UX Designer', 'Graphic Designer'];
+  const SKILLS = ['Web Developer', 'AI Developer', 'UI/UX Designer', 'Graphic Designer'];
   const HOLD = 1700, FLIP = 1250;
   const cal = $('#cal'); if (!cal) return;
   const body = $('.cal__body', cal), leaf = $('.cal__leaf', cal);
@@ -897,7 +897,7 @@ const toggleMode = () => setMode(getMode() === 'dark' ? 'light' : 'dark');
      Opening the door reveals that same live wall, so there is no page swap to glitch. */
   const wallv = $('#wallv');
   // every door has its own room, loaded inside this page, so stepping in and coming back never reloads anything
-  const frames = [], ready = [], TITLES = ['Web Development', 'App Development', 'UI/UX Design', 'Graphic Design'];
+  const frames = [], ready = [], TITLES = ['Web Development', 'AI Project Development', 'UI/UX Design', 'Graphic Design'];
   let frame = null, frameReady = false, cur = 0, inWall = false, pushed = false, savedGap = null;
   function loadRoom(i){
     if (frames[i]) return;
@@ -939,7 +939,7 @@ const toggleMode = () => setMode(getMode() === 'dark' ? 'light' : 'dark');
   // what each door holds: shown beside the door on hover (desktop), under the swipe hint on phones
   const INFO = [   // [headline, sub-headline, body]
     ['Web Development', 'End to end, from sketch to live site', ['Discovery & planning', 'UX & visual design', 'Front-end & back-end development', 'Technical SEO & performance', 'Analytics, launch & ongoing support']],
-    ['App Development', 'From the first idea to the app store', ['Product scoping & user flows', 'Interface design', 'Cross-platform development', 'Device testing & store launch', 'Analytics, monitoring & updates']],
+    ['AI Project Development', 'From a raw idea to a working AI product', ['Problem scoping & AI use cases', 'LLM & API integration (Gemini, OpenAI)', 'Chatbots, RAG & AI assistants', 'AI web apps & interfaces', 'Testing, deployment & monitoring']],
     ['UI/UX Design', 'Research first, pixels second', ['Brand & business needs analysis', 'User & competitor research', 'Information architecture & flows', 'Wireframes & high-fidelity UI', 'Interactive prototypes & testing']],
     ['Graphic Design', 'Visual content true to the brand', ['Brand, audience & tone analysis', 'Built around brand guidelines', 'Posters & social media creatives', 'Strong type & clear hierarchy', 'Every format each platform needs']],
   ];

@@ -192,12 +192,12 @@ export const ROOMS: RoomInfo[] = [
   },
   {
     slug: "app-developer",
-    title: "App Development",
-    seoTitle: "Freelance App Developer",
+    title: "AI Project Development",
+    seoTitle: "Freelance AI Developer",
     colour: "#4a3540",
     device: "phone",
     blurb:
-      "Web apps and AI tools, designed and built end to end: from the first screen to the small interactions that make an app feel good in your hand.",
+      "AI-powered products, designed and built end to end: research assistants, chatbots and smart web apps, from the first prompt to a polished, working interface.",
     projects: [
       {
         kind: "Web app · AI",
