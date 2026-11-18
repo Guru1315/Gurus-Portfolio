@@ -69,3 +69,8 @@ Photos and illustrations from [Wikimedia Commons](https://commons.wikimedia.org)
 | Breast Cancer Diagnosis | Breast cancer cell (2) | Unknown photographer | Public domain | https://commons.wikimedia.org/wiki/File:Breast_cancer_cell_(2).jpg |
 | Insurance Cost Predictor | Health care spending in the United States by private and public payers | Wikideas1 | CC0 | https://commons.wikimedia.org/wiki/File:Health_care_spending_in_the_United_States_by_private_and_public_payers.webp |
 | Diabetes Prediction | Blausen 0301 Diabetes GlucoseMonitoring | Blausen.com staff (2014), "Medical gallery of Blausen Medical 2014", WikiJournal of Medicine 1 (2) | CC BY 3.0 | https://commons.wikimedia.org/wiki/File:Blausen_0301_Diabetes_GlucoseMonitoring.png |
+| Wine Quality | Bottle and glass of red wine | congerdesign | CC0 | https://commons.wikimedia.org/wiki/File:Bottle_and_glass_of_red_wine.jpg |
+| Income Prediction | People working in small group in office | Ryan Hagerty | Public domain | https://commons.wikimedia.org/wiki/File:People_working_in_small_group_in_office.jpg |
+| Mall Customer Segments | Hempstead Valley Shopping Centre Interior – Modern atrium with glass roof and clerestory windows, Kent, England | John K Thorne | Public domain | https://commons.wikimedia.org/wiki/File:Hempstead_Valley_Shopping_Centre_Interior_%E2%80%93_Modern_atrium_with_glass_roof_and_clerestory_windows,_Kent,_England.jpg |
+| Wine Cultivar Map | Solaris grapes in Chateaux Luna vineyard 24 | W.carter | CC0 | https://commons.wikimedia.org/wiki/File:Solaris_grapes_in_Chateaux_Luna_vineyard_24.jpg |
+| Credit Card Default | Bunch of credit cards (49860171753) | Yuri Samoilov | CC BY 2.0 | https://commons.wikimedia.org/wiki/File:Bunch_of_credit_cards_(49860171753).jpg |
