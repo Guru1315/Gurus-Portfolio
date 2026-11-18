@@ -21,11 +21,12 @@ export function portfolioMarkup(c: SiteContent): string {
     <div class="ld__pill" style="--k:0;--c:#1F1C1C;--t:#E8E4E0;--dir:1"><span>${esc(c.name)}</span></div>
     <div class="ld__pill" style="--k:1;--c:#22304a;--t:#E8E4E0;--dir:-1"><span>Web development</span></div>
     <div class="ld__pill" style="--k:2;--c:#4a3540;--t:#E8E4E0;--dir:1"><span>AI development</span></div>
-    <div class="ld__pill" style="--k:3;--c:#7a8670;--t:#F3EEEC;--dir:-1"><span>UI/UX design</span></div>
-    <div class="ld__pill" style="--k:4;--c:#a4552c;--t:#F3EEEC;--dir:1"><span>Graphic design</span></div>
+    <div class="ld__pill" style="--k:3;--c:#1f4f52;--t:#E8E4E0;--dir:-1"><span>ML development</span></div>
+    <div class="ld__pill" style="--k:4;--c:#7a8670;--t:#F3EEEC;--dir:1"><span>UI/UX design</span></div>
+    <div class="ld__pill" style="--k:5;--c:#a4552c;--t:#F3EEEC;--dir:-1"><span>Graphic design</span></div>
   </div>
   <div class="ld__hud">
-    <div class="ld__top"><span><b>${esc(c.name)}</b> · Portfolio</span><span>Web · AI · UI/UX · Graphic design</span></div>
+    <div class="ld__top"><span><b>${esc(c.name)}</b> · Portfolio</span><span>Web · AI · ML · UI/UX · Graphic design</span></div>
     <div class="ld__bot">
       <p class="ld__num"><small>Opening up the work</small><span id="ldCount">000</span></p>
       <div class="ld__bar"><i></i></div>
@@ -41,8 +42,9 @@ export function portfolioMarkup(c: SiteContent): string {
         <li><button data-go="home" aria-current="page"><span data-h="y 0 -2|o .8 1" data-hs="320 22" data-ht="button">Home</span></button></li>
         <li><button data-door="0"><span data-h="y 0 -2|o .8 1" data-hs="320 22" data-ht="button">Web Development</span></button></li>
         <li><button data-door="1"><span data-h="y 0 -2|o .8 1" data-hs="320 22" data-ht="button">AI Project Development</span></button></li>
-        <li><button data-door="2"><span data-h="y 0 -2|o .8 1" data-hs="320 22" data-ht="button">UI/UX Design</span></button></li>
-        <li><button data-door="3"><span data-h="y 0 -2|o .8 1" data-hs="320 22" data-ht="button">Graphic Design</span></button></li>
+        <li><button data-door="2"><span data-h="y 0 -2|o .8 1" data-hs="320 22" data-ht="button">ML Development</span></button></li>
+        <li><button data-door="3"><span data-h="y 0 -2|o .8 1" data-hs="320 22" data-ht="button">UI/UX Design</span></button></li>
+        <li><button data-door="4"><span data-h="y 0 -2|o .8 1" data-hs="320 22" data-ht="button">Graphic Design</span></button></li>
         <li><button data-go="about"><span data-h="y 0 -2|o .8 1" data-hs="320 22" data-ht="button">My story</span></button></li>
         <li><button data-contact><span data-h="y 0 -2|o .8 1" data-hs="320 22" data-ht="button">Contact</span></button></li>
       </ul>
@@ -142,7 +144,7 @@ export function portfolioMarkup(c: SiteContent): string {
       <p class="paint" aria-hidden="true">Magic happens <br class="mbr">behind the doors</p>
       <p class="doors__hint" aria-hidden="true">Swipe along the wall</p>
       <div class="dinfo" id="dinfo" aria-live="polite"><h3 class="dinfo__h"></h3><p class="dinfo__t"></p><ul class="dinfo__p"></ul></div>
-      <p class="doors__dots" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i></p>
+      <p class="doors__dots" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i></p>
       <ul class="doors__row">
         <li class="unit" style="--i:0;--door:#22304a;--door-dk:#1c2840">
           <button class="doorway" aria-label="Open the Web Developer door">
@@ -180,7 +182,25 @@ export function portfolioMarkup(c: SiteContent): string {
             <span class="pool"></span>
           </button>
         </li>
-        <li class="unit" style="--i:2;--door:#7a8670;--door-dk:#66705d">
+        <li class="unit" style="--i:2;--door:#1f4f52;--door-dk:#1a4245">
+          <button class="doorway" aria-label="Open the ML Developer door">
+            <span class="casing"></span>
+            <span class="opening">
+              <span class="room"></span>
+              <span class="spill"></span>
+              <span class="door">
+                <span class="door__flute"></span>
+                <span class="plate">ML Developer</span>
+                <span class="handle"><span class="handle__lever"></span><span class="handle__lock"></span></span>
+                <span class="door__shade"></span>
+                <span class="leak"></span>
+              </span>
+              <span class="sill"></span>
+            </span>
+            <span class="pool"></span>
+          </button>
+        </li>
+        <li class="unit" style="--i:3;--door:#7a8670;--door-dk:#66705d">
           <button class="doorway" aria-label="Open the UI/UX Designer door">
             <span class="casing"></span>
             <span class="opening">
@@ -198,7 +218,7 @@ export function portfolioMarkup(c: SiteContent): string {
             <span class="pool"></span>
           </button>
         </li>
-        <li class="unit" style="--i:3;--door:#a4552c;--door-dk:#8c4826">
+        <li class="unit" style="--i:4;--door:#a4552c;--door-dk:#8c4826">
           <button class="doorway" aria-label="Open the Graphic Designer door">
             <span class="casing"></span>
             <span class="opening">
@@ -261,7 +281,7 @@ ${c.timeline.map(chapter).join("\n")}
       <button class="sf__ghost" data-go="works">See my work</button>
     </div>
     <div class="sf__cols">
-      <div><h3>Work</h3><ul class="work"><li><a href="/web-developer" data-door="0">Web Development</a></li><li><a href="/app-developer" data-door="1">AI Project Development</a></li><li><a href="/ui-ux-designer" data-door="2">UI/UX Design</a></li><li><a href="/graphic-designer" data-door="3">Graphic Design</a></li></ul></div>
+      <div><h3>Work</h3><ul class="work"><li><a href="/web-developer" data-door="0">Web Development</a></li><li><a href="/app-developer" data-door="1">AI Project Development</a></li><li><a href="/ml-developer" data-door="2">ML Development</a></li><li><a href="/ui-ux-designer" data-door="3">UI/UX Design</a></li><li><a href="/graphic-designer" data-door="4">Graphic Design</a></li></ul></div>
       <div><h3>Navigate</h3><ul><li><a href="/" data-go="home">Home</a></li><li><a href="/#about" data-go="about">My story</a></li><li><button data-contact>Contact</button></li></ul></div>
       <div><h3>Status</h3><ul><li class="st">Available for work</li><li class="st">Remote-first, worldwide</li><li class="st">Local time <span data-ftime>—</span></li></ul></div>
     </div>

@@ -44,7 +44,7 @@ export function Room({ room }: { room: RoomInfo }) {
 
   const nav: [string, string][] = [
     ["home", "Home"],
-    ...ROOMS.slice(0, 4).map((r, i): [string, string] => [`door:${i}`, r.title]),
+    ...ROOMS.map((r, i): [string, string] => [`door:${i}`, r.title]),
     ["about", "My story"],
     ["contact", "Contact"],
   ];

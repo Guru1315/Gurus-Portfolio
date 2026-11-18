@@ -123,7 +123,7 @@ function closeLayer(el, after){
   setTimeout(() => { el.hidden = true; el.classList.remove('closing'); startScroll(); after?.(); }, 460);
 }
 // nav menu
-const NAV = [['Home','home'],['Web Development',0],['AI Project Development',1],['UI/UX Design',2],['Graphic Design',3],['My story','about'],['Contact',null]];
+const NAV = [['Home','home'],['Web Development',0],['AI Project Development',1],['ML Development',2],['UI/UX Design',3],['Graphic Design',4],['My story','about'],['Contact',null]];
 const navm = $('#navm');
 $('#navList').innerHTML = NAV.map(([l, id], i) =>
   `<li><button class="navm__item" style="--d:${i * 45 + 80}ms" data-i="${i}"><small>0${i + 1}</small><span>${l}</span></button></li>`).join('');
@@ -290,7 +290,7 @@ bindHovers();
 
 /* ---------- Flip calendar: skills on an endless desk-calendar flip ---------- */
 (function flipCalendar(){
-  const SKILLS = ['Web Developer', 'AI Developer', 'UI/UX Designer', 'Graphic Designer'];
+  const SKILLS = ['Web Developer', 'AI Developer', 'ML Developer', 'UI/UX Designer', 'Graphic Designer'];
   const HOLD = 1700, FLIP = 1250;
   const cal = $('#cal'); if (!cal) return;
   const body = $('.cal__body', cal), leaf = $('.cal__leaf', cal);
@@ -836,8 +836,8 @@ const toggleMode = () => setMode(getMode() === 'dark' ? 'light' : 'dark');
 /* ---------- Doors: hover cracks a door open; click swings it open and carries you through it ---------- */
 (function doors(){
   // each door is its own page (/web-developer etc.)
-  const ROUTES = ['/web-developer', '/app-developer', '/ui-ux-designer', '/graphic-designer'];
-  const SLUGS = ['web-developer', 'app-developer', 'ui-ux-designer', 'graphic-designer'];
+  const ROUTES = ['/web-developer', '/app-developer', '/ml-developer', '/ui-ux-designer', '/graphic-designer'];
+  const SLUGS = ['web-developer', 'app-developer', 'ml-developer', 'ui-ux-designer', 'graphic-designer'];
   // a link like …#app-developer lands at the doors and walks straight through that one
   const HASH_DOOR = SLUGS.indexOf(decodeURIComponent(location.hash.slice(1)));
   if (HASH_DOOR >= 0){
@@ -846,6 +846,7 @@ const toggleMode = () => setMode(getMode() === 'dark' ? 'light' : 'dark');
   }
   const sec = $('#works'); if (!sec) return;
   const units = [...sec.querySelectorAll('.unit')];
+  const LAST = units.length - 1;                      // index of the last door
   const veil = $('#veil');
   const ANG = 70, ANG_WALK = 70;                       // fully open, swung into the room
   let busy = false;
@@ -897,7 +898,7 @@ const toggleMode = () => setMode(getMode() === 'dark' ? 'light' : 'dark');
      Opening the door reveals that same live wall, so there is no page swap to glitch. */
   const wallv = $('#wallv');
   // every door has its own room, loaded inside this page, so stepping in and coming back never reloads anything
-  const frames = [], ready = [], TITLES = ['Web Development', 'AI Project Development', 'UI/UX Design', 'Graphic Design'];
+  const frames = [], ready = [], TITLES = ['Web Development', 'AI Project Development', 'ML Development', 'UI/UX Design', 'Graphic Design'];
   let frame = null, frameReady = false, cur = 0, inWall = false, pushed = false, savedGap = null;
   function loadRoom(i){
     if (frames[i]) return;
@@ -912,7 +913,7 @@ const toggleMode = () => setMode(getMode() === 'dark' ? 'light' : 'dark');
   const toWall = msg => { try { frame?.contentWindow?.postMessage(msg, location.origin === 'null' ? '*' : location.origin); } catch (e) {} };
   // start fetching the wall once the doors are near, so a click never waits
   if ('IntersectionObserver' in window){
-    const near = new IntersectionObserver(es => { if (es.some(e => e.isIntersecting)){ near.disconnect(); setTimeout(() => { warm(4); setTimeout(() => [0, 1, 2, 3].forEach(warm), 1500); }, 600); } }, { rootMargin: '200px' });
+    const near = new IntersectionObserver(es => { if (es.some(e => e.isIntersecting)){ near.disconnect(); setTimeout(() => { warm(0); setTimeout(() => units.forEach((u, k) => warm(k)), 1500); }, 600); } }, { rootMargin: '200px' });
     near.observe(sec);
   }
 
@@ -940,6 +941,7 @@ const toggleMode = () => setMode(getMode() === 'dark' ? 'light' : 'dark');
   const INFO = [   // [headline, sub-headline, body]
     ['Web Development', 'End to end, from sketch to live site', ['Discovery & planning', 'UX & visual design', 'Front-end & back-end development', 'Technical SEO & performance', 'Analytics, launch & ongoing support']],
     ['AI Project Development', 'From a raw idea to a working AI product', ['Problem scoping & AI use cases', 'LLM & API integration (Gemini, OpenAI)', 'Chatbots, RAG & AI assistants', 'AI web apps & interfaces', 'Testing, deployment & monitoring']],
+    ['ML Development', 'From raw data to a model in production', ['Data cleaning & exploration', 'Feature engineering', 'Model training & tuning', 'Evaluation & explainability', 'Deployment as APIs & apps']],
     ['UI/UX Design', 'Research first, pixels second', ['Brand & business needs analysis', 'User & competitor research', 'Information architecture & flows', 'Wireframes & high-fidelity UI', 'Interactive prototypes & testing']],
     ['Graphic Design', 'Visual content true to the brand', ['Brand, audience & tone analysis', 'Built around brand guidelines', 'Posters & social media creatives', 'Strong type & clear hierarchy', 'Every format each platform needs']],
   ];
@@ -991,17 +993,17 @@ const toggleMode = () => setMode(getMode() === 'dark' ? 'light' : 'dark');
   const mRow = $('.doors__row', sec);
   let mIdx = 0, mForce = -1, mShown = -1;
   const mSpan = () => Math.max(1, sec.offsetHeight - innerHeight);
-  const mobY = i => sec.getBoundingClientRect().top + pageYOffset + (Math.min(3, Math.max(0, i)) / 3) * mSpan();
+  const mobY = i => sec.getBoundingClientRect().top + pageYOffset + (Math.min(LAST, Math.max(0, i)) / LAST) * mSpan();
   const mDots = $('.doors__dots', sec);
   let mCur = 0, mRaf = 0, mLast = 0, mSettle = 0, swipeLock = 0;
   // scroll progress across the pinned wall → a door position that rests on each door and glides between them
   const mDwell = f => { const i = Math.floor(f), t = f - i, u = Math.min(1, Math.max(0, (t - .2) / .6)); return i + u * u * (3 - 2 * u); };
   const mProgress = () => Math.min(1, Math.max(0, -sec.getBoundingClientRect().top / mSpan()));
-  const mTarget = () => mForce >= 0 ? mForce : mDwell(mProgress() * 3);
+  const mTarget = () => mForce >= 0 ? mForce : mDwell(mProgress() * LAST);
   function mShow(i){
     if (i === mShown) return;
     mShown = i; setInfo(i);
-    mDots?.querySelectorAll('i').forEach((d, k) => d.classList.toggle('on', k === Math.min(3, i)));
+    mDots?.querySelectorAll('i').forEach((d, k) => d.classList.toggle('on', k === Math.min(LAST, i)));
     dinfo.getAnimations().forEach(a => a.cancel());
     if (!reduced) dinfo.animate([{ opacity: 0, transform: 'translateY(.4rem)' }, { opacity: 1, transform: 'none' }], { duration: 360, easing: 'cubic-bezier(.16,1,.3,1)' });
   }
@@ -1045,7 +1047,7 @@ const toggleMode = () => setMode(getMode() === 'dark' ? 'light' : 'dark');
       if (window.__touching){ mSettle = setTimeout(settle, 120); return; }
       if (busy || mForce >= 0 || performance.now() < swipeLock) return;
       const r = sec.getBoundingClientRect(); if (r.top > 0 || r.bottom < innerHeight) return;   // only while the wall is pinned
-      const want = mobY(Math.round(mProgress() * 3));
+      const want = mobY(Math.round(mProgress() * LAST));
       if (Math.abs(pageYOffset - want) > 2) mGo(want);
     }, 220);
   }
@@ -1053,12 +1055,12 @@ const toggleMode = () => setMode(getMode() === 'dark' ? 'light' : 'dark');
   addEventListener('resize', () => { mFromScroll(); mApply(); });
   // a sideways swipe steps exactly one door from where the finger landed, however much the page moved meanwhile
   let tx0 = 0, ty0 = 0, i0 = 0;
-  sec.addEventListener('touchstart', e => { tx0 = e.touches[0].clientX; ty0 = e.touches[0].clientY; i0 = Math.round(mProgress() * 3); }, { passive: true });
+  sec.addEventListener('touchstart', e => { tx0 = e.touches[0].clientX; ty0 = e.touches[0].clientY; i0 = Math.round(mProgress() * LAST); }, { passive: true });
   sec.addEventListener('touchend', e => {
     if (!MOB.matches || busy || mForce >= 0) return;
     const dx = e.changedTouches[0].clientX - tx0, dy = e.changedTouches[0].clientY - ty0;
     if (Math.abs(dx) < 40 || Math.abs(dx) < Math.abs(dy) * 1.2) return;
-    const to = Math.min(3, Math.max(0, i0 + (dx < 0 ? 1 : -1)));
+    const to = Math.min(LAST, Math.max(0, i0 + (dx < 0 ? 1 : -1)));
     swipeLock = performance.now() + 700;
     mGo(mobY(to));
   }, { passive: true });
@@ -1067,7 +1069,7 @@ const toggleMode = () => setMode(getMode() === 'dark' ? 'light' : 'dark');
 
   window.openDoor = i => {
     if (busy || inWall) return;
-    const top = MOB.matches ? mobY(Math.min(i, 3)) : sec.getBoundingClientRect().top + pageYOffset;
+    const top = MOB.matches ? mobY(Math.min(i, LAST)) : sec.getBoundingClientRect().top + pageYOffset;
     const far = Math.abs(pageYOffset - top) > 4;
     if (far){ if (lenis) lenis.scrollTo(top, { duration: .9, easing: x => 1 - Math.pow(1 - x, 3) }); else scrollTo({ top, behavior: reduced ? 'auto' : 'smooth' }); }
     const t0 = performance.now();

@@ -256,6 +256,17 @@ export const ROOMS: RoomInfo[] = [
     ],
   },
   {
+    slug: "ml-developer",
+    title: "ML Development",
+    seoTitle: "Machine Learning Developer",
+    colour: "#1f4f52",
+    device: "monitor",
+    blurb:
+      "Machine-learning models trained, evaluated and shipped: from cleaning the data and engineering features to deploying a model people can actually use.",
+    projects: [],
+    soon: "ML projects are on their way to this room: models, notebooks and the apps built on them.",
+  },
+  {
     slug: "ui-ux-designer",
     title: "UI/UX Design",
     seoTitle: "Freelance UI/UX Designer",

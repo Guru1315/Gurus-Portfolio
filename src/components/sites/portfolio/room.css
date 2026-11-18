@@ -424,4 +424,4 @@ html[data-mode="dark"] .stage.ph::after{background:radial-gradient(closest-side,
 .lb__x{border:1px solid rgba(255,255,255,.2)}.lb__nav{border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.06)}
 
 /* the room menu's longest label ("AI Project Development") needs the room the clock takes: show the clock only on wide screens */
-@media (max-width:1439.98px){.rn__clock{display:none!important}}
+@media (max-width:1679.98px){.rn__clock{display:none!important}}
