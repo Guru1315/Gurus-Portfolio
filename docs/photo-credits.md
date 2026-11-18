@@ -59,3 +59,13 @@ The Graphic Design room's concept campaigns (Aranya Living, Kaelum Springs, Saan
 | Sari from India, Varanasi, 18th century, Honolulu Museum of Art 10911.1 | Hiart | CC0 | https://commons.wikimedia.org/wiki/File:Sari_from_India,_Varanasi,_18th_century,_Honolulu_Museum_of_Art_10911.1.JPG |
 | Sari, Varanasi, Uttar Pradesh, India, 1960s, silk, gold thread, satin - Textile Museum of Canada - DSC00943 | Daderot | CC0 | https://commons.wikimedia.org/wiki/File:Sari,_Varanasi,_Uttar_Pradesh,_India,_1960s,_silk,_gold_thread,_satin_-_Textile_Museum_of_Canada_-_DSC00943.JPG |
 | Saree29 | Deepana | CC0 | https://commons.wikimedia.org/wiki/File:Saree29.jpg |
+
+## ML Development room
+
+Photos and illustrations from [Wikimedia Commons](https://commons.wikimedia.org). The Titanic, Customer Churn and Handwritten Digit cards show charts from the projects' own notebooks.
+
+| Project | Image | Creator | Licence | Source |
+|---|---|---|---|---|
+| Breast Cancer Diagnosis | Breast cancer cell (2) | Unknown photographer | Public domain | https://commons.wikimedia.org/wiki/File:Breast_cancer_cell_(2).jpg |
+| Insurance Cost Predictor | Health care spending in the United States by private and public payers | Wikideas1 | CC0 | https://commons.wikimedia.org/wiki/File:Health_care_spending_in_the_United_States_by_private_and_public_payers.webp |
+| Diabetes Prediction | Blausen 0301 Diabetes GlucoseMonitoring | Blausen.com staff (2014), "Medical gallery of Blausen Medical 2014", WikiJournal of Medicine 1 (2) | CC BY 3.0 | https://commons.wikimedia.org/wiki/File:Blausen_0301_Diabetes_GlucoseMonitoring.png |

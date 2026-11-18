@@ -10,6 +10,8 @@ export type Project = {
   tags: string[];
   /** Live site, shown as a "Visit live site" button. Without one, the card shows a short note instead, as on the source. */
   url?: string;
+  /** Source code (e.g. a GitHub repo), shown as a "View code on GitHub" button when there is no live site. */
+  code?: string;
   /** The note shown when there is no link; defaults to "Screens from the app". */
   note?: string;
   /** Tall screenshot that scrolls on the monitor or phone screen. */
@@ -262,9 +264,65 @@ export const ROOMS: RoomInfo[] = [
     colour: "#1f4f52",
     device: "monitor",
     blurb:
-      "Machine-learning models trained, evaluated and shipped: from cleaning the data and engineering features to deploying a model people can actually use.",
-    projects: [],
-    soon: "ML projects are on their way to this room: models, notebooks and the apps built on them.",
+      "One algorithm at a time, each on a real dataset: from cleaning and exploring the data to training, tuning and judging the model honestly against a baseline.",
+    // One algorithm per project, each in its own branch of DAILY_PROJECTS_OF_ML-ALGORITHMS, in the order of the roadmap.
+    // Figures come from the notebooks' own printed results. Photos: docs/photo-credits.md.
+    projects: [
+      {
+        kind: "Regression · Healthcare",
+        title: "Insurance Cost Predictor",
+        sub: "Linear Regression · medical insurance charges",
+        desc: "Predicts a person's yearly medical insurance charges from age, BMI, smoking and region across 1,338 policies. With feature engineering, R² rose from 0.78 to 0.87 and the average error fell from $4,181 to $2,755.",
+        tags: ["scikit-learn", "Feature engineering", "R² · MAE · RMSE"],
+        code: "https://github.com/Guru1315/DAILY_PROJECTS_OF_ML-ALGORITHMS/tree/Linear_Regression",
+        shot: shot("ml-insurance"),
+      },
+      {
+        kind: "Classification · History",
+        title: "Titanic Survival",
+        sub: "Logistic Regression · 891 passengers",
+        desc: "Predicts who survived the Titanic from class, sex, age and fare. Beats the always-“died” baseline of 61.5% with 79.3% test accuracy and a ROC-AUC of 0.85, then explores decision thresholds and regularisation.",
+        tags: ["Classification", "Threshold tuning", "ROC-AUC"],
+        code: "https://github.com/Guru1315/DAILY_PROJECTS_OF_ML-ALGORITHMS/tree/Logistic_Regression",
+        shot: shot("ml-titanic"),
+      },
+      {
+        kind: "Classification · Medical",
+        title: "Breast Cancer Diagnosis",
+        sub: "k-Nearest Neighbours · 569 tumour samples",
+        desc: "Classifies breast tumours as malignant or benign from 30 cell-nucleus measurements. A k-NN written from scratch matches scikit-learn at 95.6%; tuning k reaches a ROC-AUC of 0.97, and an experiment shows how noisy features hurt distance-based models.",
+        tags: ["Built from scratch", "Hyperparameter tuning", "Recall-focused"],
+        code: "https://github.com/Guru1315/DAILY_PROJECTS_OF_ML-ALGORITHMS/tree/KNN",
+        shot: shot("ml-cancer"),
+      },
+      {
+        kind: "Classification · Medical",
+        title: "Diabetes Prediction",
+        sub: "Decision Tree · 768 patients",
+        desc: "Predicts diabetes from 8 clinical measurements. Shows how an unrestricted tree memorises its data (100% on training, 68% on test, 111 leaves), then prunes it with cross-validation to a small tree whose rules a doctor can read.",
+        tags: ["Overfitting", "Pruning", "Explainable rules"],
+        code: "https://github.com/Guru1315/DAILY_PROJECTS_OF_ML-ALGORITHMS/tree/Decision_Tree",
+        shot: shot("ml-diabetes"),
+      },
+      {
+        kind: "Classification · Business",
+        title: "Customer Churn",
+        sub: "Random Forest · 7,043 telecom customers",
+        desc: "Predicts which customers are about to leave. Builds a forest by hand from bootstrapped trees (78.5% accuracy, AUC 0.82, on par with scikit-learn), then tunes it to a cross-validated ROC-AUC of 0.85 and picks a threshold that catches more churners.",
+        tags: ["Bagging from scratch", "Grid search", "Imbalanced data"],
+        code: "https://github.com/Guru1315/DAILY_PROJECTS_OF_ML-ALGORITHMS/tree/Random_Forest",
+        shot: shot("ml-churn"),
+      },
+      {
+        kind: "Classification · Computer vision",
+        title: "Handwritten Digit Recognition",
+        sub: "Naive Bayes · 1,797 digit images",
+        desc: "Recognises handwritten digits from 8×8 pixel images. Compares Gaussian, Multinomial and Bernoulli Naive Bayes, then adds PCA to lift accuracy from 82.9% to 94.9% on digits it has never seen.",
+        tags: ["Image classification", "PCA", "Model comparison"],
+        code: "https://github.com/Guru1315/DAILY_PROJECTS_OF_ML-ALGORITHMS/tree/Naive_Bayes",
+        shot: shot("ml-digits"),
+      },
+    ],
   },
   {
     slug: "ui-ux-designer",
