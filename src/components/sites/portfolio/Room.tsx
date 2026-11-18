@@ -147,13 +147,9 @@ export function Room({ room }: { room: RoomInfo }) {
                         <li key={t}>{t}</li>
                       ))}
                     </ul>
-                    {p.url ? (
+                    {room.noLinks ? null : p.url ? (
                       <a className="live" href={p.url} target="_blank" rel="noopener noreferrer">
                         Visit live site {ARROW}
-                      </a>
-                    ) : p.code ? (
-                      <a className="live" href={p.code} target="_blank" rel="noopener noreferrer">
-                        View code on GitHub {ARROW}
                       </a>
                     ) : (
                       <span className="note">{p.note ?? "Screens from the app"}</span>

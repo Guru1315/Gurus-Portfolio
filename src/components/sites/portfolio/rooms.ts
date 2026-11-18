@@ -10,8 +10,6 @@ export type Project = {
   tags: string[];
   /** Live site, shown as a "Visit live site" button. Without one, the card shows a short note instead, as on the source. */
   url?: string;
-  /** Source code (e.g. a GitHub repo), shown as a "View code on GitHub" button when there is no live site. */
-  code?: string;
   /** The note shown when there is no link; defaults to "Screens from the app". */
   note?: string;
   /** Tall screenshot that scrolls on the monitor or phone screen. */
@@ -51,6 +49,8 @@ export type RoomInfo = {
   worlds?: World[];
   /** Shown while a room has no projects yet. */
   soon?: string;
+  /** Hides the live-site button and the note on every card (the ML room shows no links). */
+  noLinks?: boolean;
 };
 
 const shot = (name: string) => `/sites/portfolio/work/${name}.webp`;
@@ -263,9 +263,10 @@ export const ROOMS: RoomInfo[] = [
     seoTitle: "Machine Learning Developer",
     colour: "#1f4f52",
     device: "monitor",
+    noLinks: true,
     blurb:
       "One algorithm at a time, each on a real dataset: from cleaning and exploring the data to training, tuning and judging the model honestly against a baseline.",
-    // One algorithm per project, each in its own branch of DAILY_PROJECTS_OF_ML-ALGORITHMS, in the order of the roadmap.
+    // One algorithm per project (each in its own branch of DAILY_PROJECTS_OF_ML-ALGORITHMS), in the order of the roadmap. No links on these cards.
     // Figures come from the notebooks' own printed results. Photos: docs/photo-credits.md.
     projects: [
       {
@@ -274,7 +275,6 @@ export const ROOMS: RoomInfo[] = [
         sub: "Linear Regression · medical insurance charges",
         desc: "Predicts a person's yearly medical insurance charges from age, BMI, smoking and region across 1,338 policies. With feature engineering, R² rose from 0.78 to 0.87 and the average error fell from $4,181 to $2,755.",
         tags: ["scikit-learn", "Feature engineering", "R² · MAE · RMSE"],
-        code: "https://github.com/Guru1315/DAILY_PROJECTS_OF_ML-ALGORITHMS/tree/Linear_Regression",
         shot: shot("ml-insurance"),
       },
       {
@@ -283,7 +283,6 @@ export const ROOMS: RoomInfo[] = [
         sub: "Logistic Regression · 891 passengers",
         desc: "Predicts who survived the Titanic from class, sex, age and fare. Beats the always-“died” baseline of 61.5% with 79.3% test accuracy and a ROC-AUC of 0.85, then explores decision thresholds and regularisation.",
         tags: ["Classification", "Threshold tuning", "ROC-AUC"],
-        code: "https://github.com/Guru1315/DAILY_PROJECTS_OF_ML-ALGORITHMS/tree/Logistic_Regression",
         shot: shot("ml-titanic"),
       },
       {
@@ -292,7 +291,6 @@ export const ROOMS: RoomInfo[] = [
         sub: "k-Nearest Neighbours · 569 tumour samples",
         desc: "Classifies breast tumours as malignant or benign from 30 cell-nucleus measurements. A k-NN written from scratch matches scikit-learn at 95.6%; tuning k reaches a ROC-AUC of 0.97, and an experiment shows how noisy features hurt distance-based models.",
         tags: ["Built from scratch", "Hyperparameter tuning", "Recall-focused"],
-        code: "https://github.com/Guru1315/DAILY_PROJECTS_OF_ML-ALGORITHMS/tree/KNN",
         shot: shot("ml-cancer"),
       },
       {
@@ -301,7 +299,6 @@ export const ROOMS: RoomInfo[] = [
         sub: "Decision Tree · 768 patients",
         desc: "Predicts diabetes from 8 clinical measurements. Shows how an unrestricted tree memorises its data (100% on training, 68% on test, 111 leaves), then prunes it with cross-validation to a small tree whose rules a doctor can read.",
         tags: ["Overfitting", "Pruning", "Explainable rules"],
-        code: "https://github.com/Guru1315/DAILY_PROJECTS_OF_ML-ALGORITHMS/tree/Decision_Tree",
         shot: shot("ml-diabetes"),
       },
       {
@@ -310,7 +307,6 @@ export const ROOMS: RoomInfo[] = [
         sub: "Random Forest · 7,043 telecom customers",
         desc: "Predicts which customers are about to leave. Builds a forest by hand from bootstrapped trees (78.5% accuracy, AUC 0.82, on par with scikit-learn), then tunes it to a cross-validated ROC-AUC of 0.85 and picks a threshold that catches more churners.",
         tags: ["Bagging from scratch", "Grid search", "Imbalanced data"],
-        code: "https://github.com/Guru1315/DAILY_PROJECTS_OF_ML-ALGORITHMS/tree/Random_Forest",
         shot: shot("ml-churn"),
       },
       {
@@ -319,7 +315,6 @@ export const ROOMS: RoomInfo[] = [
         sub: "Naive Bayes · 1,797 digit images",
         desc: "Recognises handwritten digits from 8×8 pixel images. Compares Gaussian, Multinomial and Bernoulli Naive Bayes, then adds PCA to lift accuracy from 82.9% to 94.9% on digits it has never seen.",
         tags: ["Image classification", "PCA", "Model comparison"],
-        code: "https://github.com/Guru1315/DAILY_PROJECTS_OF_ML-ALGORITHMS/tree/Naive_Bayes",
         shot: shot("ml-digits"),
       },
       {
@@ -328,7 +323,6 @@ export const ROOMS: RoomInfo[] = [
         sub: "Support Vector Machine · 1,599 red wines",
         desc: "Picks out the rare good wines (a taster score of 7 or more) from 11 chemical measurements. Shows why SVMs need scaling (F1 0.03 → 0.41), tunes C and gamma, then uses class weights and a chosen threshold to find 61% of the good wines instead of 33%, at a test ROC-AUC of 0.84.",
         tags: ["RBF kernel", "Class weights", "Threshold tuning"],
-        code: "https://github.com/Guru1315/DAILY_PROJECTS_OF_ML-ALGORITHMS/tree/Support_Vector",
         shot: shot("ml-wine"),
       },
       {
@@ -337,7 +331,6 @@ export const ROOMS: RoomInfo[] = [
         sub: "Gradient Boosting · 32,561 census records",
         desc: "Predicts who earns more than $50K a year. Builds boosting from scratch to show small trees correcting each other's mistakes, then beats logistic regression and a random forest with 87% accuracy and a test ROC-AUC of 0.92, using early stopping, tuning and a check across groups.",
         tags: ["Boosting from scratch", "Early stopping", "XGBoost"],
-        code: "https://github.com/Guru1315/DAILY_PROJECTS_OF_ML-ALGORITHMS/tree/Gradient_Boosting",
         shot: shot("ml-income"),
       },
       {
@@ -346,7 +339,6 @@ export const ROOMS: RoomInfo[] = [
         sub: "K-Means · 200 shoppers",
         desc: "Groups mall customers by income and spending with no labels to learn from. A k-means written from scratch, the elbow method and silhouette scores settle on 5 segments (silhouette 0.555), each profiled and named, such as “high income, low spending”, and checked against three other clustering methods.",
         tags: ["Unsupervised", "Elbow & silhouette", "Segmentation"],
-        code: "https://github.com/Guru1315/DAILY_PROJECTS_OF_ML-ALGORITHMS/tree/K-means_Clustering",
         shot: shot("ml-mall"),
       },
       {
@@ -355,7 +347,6 @@ export const ROOMS: RoomInfo[] = [
         sub: "PCA · 178 wines, 13 measurements",
         desc: "Shrinks 13 chemical measurements into 2 that keep 55% of the variance and still separate the three grape cultivars on a flat map. A PCA written from scratch matches scikit-learn exactly, and a classifier on just 5 components reaches 97.8% against 98.3% with all 13 columns.",
         tags: ["PCA from scratch", "Scaling", "Visualisation"],
-        code: "https://github.com/Guru1315/DAILY_PROJECTS_OF_ML-ALGORITHMS/tree/PCA",
         shot: shot("ml-pca"),
       },
       {
@@ -364,7 +355,6 @@ export const ROOMS: RoomInfo[] = [
         sub: "Neural network · 30,000 card clients",
         desc: "Predicts which clients will miss next month's payment. A network written from scratch with backpropagation learns a curved boundary a straight line can't (94.7% against 84%); on the real data, scaling, a tuned 128-64-32 network and a chosen threshold catch 57% of defaulters at a test ROC-AUC of 0.77, matched in Keras.",
         tags: ["Backprop from scratch", "scikit-learn MLP", "Keras"],
-        code: "https://github.com/Guru1315/DAILY_PROJECTS_OF_ML-ALGORITHMS/tree/Neural_networks",
         shot: shot("ml-credit"),
       },
     ],
