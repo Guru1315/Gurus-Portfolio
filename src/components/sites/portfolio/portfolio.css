@@ -905,12 +905,6 @@ body{margin:0}
 .mform label.qc:has(input:checked)::before{border:5px solid var(--foreground)}
 .mform label.qc:has(input:focus-visible){outline:2px solid var(--accent);outline-offset:2px}
 .mform label.qc--q>span{color:rgba(var(--fg-rgb),.7);font-weight:400}
-.mform .cur{display:flex;gap:.25rem;align-self:flex-start;padding:.25rem;margin-bottom:.25rem;border-radius:99px;background:var(--surface)}
-.mform .cur label{position:relative;flex-direction:row;gap:0}
-.mform .cur input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
-.mform .cur span{display:inline-flex;align-items:center;min-height:2.25rem;padding:0 .9rem;border-radius:99px;font-size:.8125rem;font-weight:600;text-transform:none;letter-spacing:0;color:rgba(var(--fg-rgb),.62);cursor:pointer;transition:background .2s,color .2s}
-.mform .cur input:checked+span{background:var(--panel);color:var(--foreground);box-shadow:0 1px 3px rgba(0,0,0,.12)}
-.mform .cur input:focus-visible+span{outline:2px solid var(--accent);outline-offset:1px}
 .qz__err{margin:0;min-height:1.25rem;font-size:.8125rem;font-weight:500;color:#B3412F}
 html[data-mode="dark"] .qz__err{color:#F08A78}
 .qz__err:empty{min-height:0}

@@ -67,7 +67,7 @@ export default function LegalPage() {
       <p>
         The &ldquo;Hire me&rdquo; form doesn&apos;t send anything itself. When you press &ldquo;Write the email&rdquo;, it opens your own email
         app with a message to me filled in: your name, email address, phone number, company or website (if you give one), your answers to its
-        questions (the kind of work, budget range, start date and who the project is for) and your message. Nothing is sent until you press send
+        questions (the kind of work, start date and who the project is for) and your message. Nothing is sent until you press send
         there; the message then travels through your email provider to my inbox (Gmail, run by Google).
       </p>
       <p>

@@ -326,15 +326,14 @@ ${c.timeline.map(chapter).join("\n")}
   <div class="modal__panel" id="mPanel">
     <button class="x-btn" id="mClose" aria-label="Close"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4l16 16M20 4 4 20"/></svg></button>
     <div id="mForm">
-      <div class="mhead"><p>Hire me</p><h2 id="mTitle">Tell me what you need built.</h2><small class="qz__min">Five quick questions.</small></div>
+      <div class="mhead"><p>Hire me</p><h2 id="mTitle">Tell me what you need built.</h2><small class="qz__min">Four quick questions.</small></div>
       <!-- a short questionnaire, one question at a time; it ends by opening an email to me with the answers -->
       <form class="mform" id="reqForm" name="contact" method="POST" action="/" novalidate>
         <input type="hidden" name="form-name" value="contact">
         <input type="hidden" name="subject" id="f-subject" value="New enquiry">
         <input type="hidden" name="fit" id="f-fit">
-        <input type="hidden" name="budget_label" id="f-budget-label">
         <p class="mform__hp" aria-hidden="true"><label>Leave this empty <input name="company" tabindex="-1" autocomplete="off"></label></p>
-        <div class="qz__top" aria-hidden="true"><span id="qzStep">1 of 5</span><span class="qz__bar"><i id="qzBar"></i></span></div>
+        <div class="qz__top" aria-hidden="true"><span id="qzStep">1 of 4</span><span class="qz__bar"><i id="qzBar"></i></span></div>
 
         <fieldset class="qz" data-step="1">
           <legend tabindex="-1">What do you need?</legend>
@@ -346,19 +345,6 @@ ${c.timeline.map(chapter).join("\n")}
         </fieldset>
 
         <fieldset class="qz" data-step="2" hidden>
-          <legend tabindex="-1">What's your budget for this project?</legend>
-          <div class="cur" role="radiogroup" aria-label="Currency">
-            <label><input type="radio" name="currency" value="USD"><span>USD $</span></label>
-            <label><input type="radio" name="currency" value="GBP"><span>GBP £</span></label>
-            <label><input type="radio" name="currency" value="INR"><span>INR ₹</span></label>
-          </div>
-          <label class="qc"><input type="radio" name="budget" value="under"><span data-b="0">Under ₹45,000</span></label>
-          <label class="qc"><input type="radio" name="budget" value="1"><span data-b="1">₹45,000 – ₹1.25 lakh</span></label>
-          <label class="qc"><input type="radio" name="budget" value="2"><span data-b="2">₹1.25 – ₹4 lakh</span></label>
-          <label class="qc"><input type="radio" name="budget" value="3"><span data-b="3">₹4 lakh or more</span></label>
-        </fieldset>
-
-        <fieldset class="qz" data-step="3" hidden>
           <legend tabindex="-1">When do you want to start?</legend>
           <label class="qc"><input type="radio" name="timeline" value="Within a month"><span>Within a month</span></label>
           <label class="qc"><input type="radio" name="timeline" value="In 1 to 3 months"><span>In 1 to 3 months</span></label>
@@ -366,7 +352,7 @@ ${c.timeline.map(chapter).join("\n")}
           <label class="qc"><input type="radio" name="timeline" value="Just exploring"><span>Just exploring for now</span></label>
         </fieldset>
 
-        <fieldset class="qz" data-step="4" hidden>
+        <fieldset class="qz" data-step="3" hidden>
           <legend tabindex="-1">Who is this for?</legend>
           <label class="qc"><input type="radio" name="client_type" value="Established business"><span>An established business</span></label>
           <label class="qc"><input type="radio" name="client_type" value="Startup"><span>A startup</span></label>
@@ -374,7 +360,7 @@ ${c.timeline.map(chapter).join("\n")}
           <label class="qc"><input type="radio" name="client_type" value="Personal project"><span>A personal project</span></label>
         </fieldset>
 
-        <fieldset class="qz" data-step="5" hidden>
+        <fieldset class="qz" data-step="4" hidden>
           <legend tabindex="-1">Last step: how do I reach you?</legend>
           <label for="f-name"><span>Name</span><input id="f-name" name="name" type="text" required maxlength="80" placeholder="Your name" autocomplete="name"></label>
           <label for="f-email"><span>Work email</span><input id="f-email" name="email" type="email" required maxlength="120" placeholder="you@company.com" autocomplete="email"></label>

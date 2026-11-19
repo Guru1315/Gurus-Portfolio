@@ -150,7 +150,7 @@ function closeModal(){
   closeLayer(modal, () => {
     // give focus back only to keyboard users, so a mouse click doesn't leave the nav item looking hovered
     if (lastInput === 'key') lastFocus?.focus?.({ preventScroll:true }); else document.activeElement?.blur?.();
-    setTimeout(() => { form.reset(); setCur(CUR0); qzGo(1); $('#mForm').hidden = false; $('#mSuccess').hidden = true; $('#mStop').hidden = true; }, 300);
+    setTimeout(() => { form.reset(); qzGo(1); $('#mForm').hidden = false; $('#mSuccess').hidden = true; $('#mStop').hidden = true; }, 300);
   });
 }
 modal.addEventListener('click', closeModal);
@@ -163,24 +163,15 @@ const FORM_LIVE = !!DB;
 const SEND_LABEL = FORM_LIVE ? 'Send enquiry' : 'Write the email';
 
 // ── the questionnaire: one question at a time, then an email to me with every answer filled in ──
-const STEPS = 5;
-// budget ranges per currency, in the order of the four choices (no minimum: every budget can carry on)
-const BUDGETS = {
-  USD: ['Under $500', '$500 – $1,500', '$1,500 – $5,000', '$5,000 or more'],
-  GBP: ['Under £400', '£400 – £1,200', '£1,200 – £4,000', '£4,000 or more'],
-  INR: ['Under ₹45,000', '₹45,000 – ₹1.25 lakh', '₹1.25 – ₹4 lakh', '₹4 lakh or more'],
-};
+const STEPS = 4;
+// the form no longer asks about budget; the enquiries table still requires one (and a currency), so each enquiry
+// is saved as "Not asked", with the currency of the visitor's region as before
+const NO_BUDGET = 'Not asked';
 const CUR0 = (() => { try { const z = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
   return /Calcutta|Kolkata/.test(z) ? 'INR' : /^Europe\/(London|Belfast|Guernsey|Jersey|Isle_of_Man)/.test(z) ? 'GBP' : 'USD'; } catch (e) { return 'USD'; } })();
-const budgetIndex = v => v === 'under' ? 0 : +v;   // the "under" choice is the lowest range
 let step = 1;
 const qzSteps = [...form.querySelectorAll('.qz')];
 function qzFocus(){ const s = qzSteps[step - 1]; (s.querySelector('.qc input:checked') || s.querySelector('.qc input') || s.querySelector('input'))?.focus({ preventScroll: true }); }
-function setCur(c){
-  const b = BUDGETS[c] || BUDGETS.USD;
-  form.querySelector(`input[name=currency][value=${c}]`).checked = true;
-  form.querySelectorAll('[data-b]').forEach(s => { s.textContent = b[+s.dataset.b]; });
-}
 function qzGo(n, focus){
   step = n; $('#qzErr').textContent = '';
   qzSteps.forEach((s, i) => { s.hidden = i !== n - 1; });
@@ -203,11 +194,10 @@ function qzCheck(){
     if (d.get('service') === 'question'){ qzStop('This form is for hiring me',
       'I keep it for client projects, so I can’t answer questions about how this site was made or general advice here. Thanks for stopping by, and for the interest in the work.', 1); return false; }
   }
-  if (step === 2 && !d.get('budget')) return $('#qzErr').textContent = 'Choose a budget range.', false;
-  if (step === 3 && !d.get('timeline')) return $('#qzErr').textContent = 'Choose when you’d like to start.', false;
-  if (step === 4 && !d.get('client_type')) return $('#qzErr').textContent = 'Choose who the project is for.', false;
-  if (step === 5){
-    for (const el of qzSteps[4].querySelectorAll('input,textarea')){
+  if (step === 2 && !d.get('timeline')) return $('#qzErr').textContent = 'Choose when you’d like to start.', false;
+  if (step === 3 && !d.get('client_type')) return $('#qzErr').textContent = 'Choose who the project is for.', false;
+  if (step === 4){
+    for (const el of qzSteps[3].querySelectorAll('input,textarea')){
       if (!el.checkValidity()){
         $('#qzErr').textContent = el.id === 'f-project' ? 'Tell me a little more about the project (at least a sentence or two).'
           : el.id === 'f-phone' ? 'Add a phone number with its country code.' : el.id === 'f-email' ? 'Check your email address.' : 'Fill in your name.';
@@ -217,12 +207,11 @@ function qzCheck(){
   }
   return true;
 }
-setCur(CUR0); qzGo(1);
-form.querySelectorAll('input[name=currency]').forEach(r => r.addEventListener('change', () => setCur(r.value)));
+qzGo(1);
 // a choice moves straight on to the next question
 form.addEventListener('change', e => {
   const n = e.target.name;
-  if (!['service', 'budget', 'timeline', 'client_type'].includes(n)) return;
+  if (!['service', 'timeline', 'client_type'].includes(n)) return;
   if (lastInput !== 'mouse') return;   // arrow keys move between choices; keyboard users go on with Enter
   setTimeout(() => { if (qzCheck()) qzGo(step + 1, true); }, 180);
 });
@@ -235,15 +224,14 @@ form.addEventListener('submit', e => {
   if (!qzCheck()) return;
   if (step < STEPS){ qzGo(step + 1, true); return; }
   const g = k => (new FormData(form).get(k) || '').toString().trim();
-  const tier = budgetIndex(g('budget')), budget = BUDGETS[g('currency')][tier];
-  // a quick read on the lead for my inbox: a bigger budget, a real business and a near start come first
-  const fit = (tier >= 2 ? 2 : tier >= 1 ? 1 : 0) + (g('client_type') === 'Personal project' ? 0 : 1) + (g('timeline') === 'Just exploring' ? 0 : 1);
-  const grade = fit >= 4 ? 'A' : fit === 3 ? 'B' : 'C';
-  $('#f-fit').value = grade; $('#f-budget-label').value = budget;
-  $('#f-subject').value = `[${grade}] ${g('service')} · ${budget} · ${g('name')}`;
+  // a quick read on the lead for my inbox: a real business starting soon comes first
+  const fit = (g('client_type') === 'Personal project' ? 0 : 1) + (g('timeline') === 'Just exploring' ? 0 : 1);
+  const grade = fit === 2 ? 'A' : fit === 1 ? 'B' : 'C';
+  $('#f-fit').value = grade;
+  $('#f-subject').value = `[${grade}] ${g('service')} · ${g('name')}`;
   const name = g('name'), mail = g('email'), phone = g('phone'), proj = g('project');
   const subject = $('#f-subject').value;
-  const body = `Hi ${cfg.firstName},\n\n${proj}\n\nService: ${g('service')}\nBudget: ${budget}\nStart: ${g('timeline')}\nFor: ${g('client_type')}${g('website') ? '\nCompany: ' + g('website') : ''}\n\n— ${name}\n${mail}\n${phone}`;
+  const body = `Hi ${cfg.firstName},\n\n${proj}\n\nService: ${g('service')}\nStart: ${g('timeline')}\nFor: ${g('client_type')}${g('website') ? '\nCompany: ' + g('website') : ''}\n\n— ${name}\n${mail}\n${phone}`;
   const viaMail = () => {
     location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     $('#mOkT').textContent = 'Almost there';
@@ -264,7 +252,7 @@ form.addEventListener('submit', e => {
   // If saving fails for any reason, fall back to email so no enquiry is ever lost.
   const btn = $('#mSend'); btn.disabled = true; $('#mSendLbl').textContent = 'Sending…';
   const row = {
-    service: g('service'), budget, currency: g('currency'), timeline: g('timeline'), client_type: g('client_type'),
+    service: g('service'), budget: NO_BUDGET, currency: CUR0, timeline: g('timeline'), client_type: g('client_type'),
     name: name.slice(0, 80), email: mail.slice(0, 120), phone: phone.slice(0, 20), website: g('website').slice(0, 200) || null,
     project: proj.slice(0, 1500), fit: grade,
   };
