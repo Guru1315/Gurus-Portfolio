@@ -40,6 +40,16 @@ export const site: SiteContent = {
     },
     {
       year: "2026",
+      when: "Sep 2026 — Oct 2026",
+      title: "Artificial Intelligence intern",
+      org: "Incode Vision, online",
+      points: [
+        "Gained practical knowledge of Artificial Intelligence, Python programming and Generative AI, including working with Gemini LLM models and their real-world applications.",
+        "Developed hands-on experience in AI chatbot development, prompt engineering and integrating AI models to build intelligent solutions for real-world problems.",
+      ],
+    },
+    {
+      year: "2026",
       when: "Jan 2026 — Jun 2026",
       title: "Web developer",
       org: "Saveetha School of Engineering, Chennai",
@@ -76,6 +86,16 @@ export const site: SiteContent = {
       points: [
         "Statistics and probability: mean, median, standard deviation, distributions and correlation, the ideas behind how machine-learning algorithms make predictions.",
         "Linear algebra and calculus: matrices, vectors, derivatives and gradients, which explain how neural networks and deep learning models learn.",
+      ],
+    },
+    {
+      year: "2012",
+      when: "Early 2012 — Now",
+      title: "Cricketer (batsman)",
+      org: "Tirupattur & Chennai",
+      points: [
+        "As a batsman, cricket has taught me focus, patience, decision-making and how to perform under pressure: qualities that help me take on complex challenges in my professional journey.",
+        "Just as a batsman adapts to different bowlers and match situations, I adapt to new technologies, keep improving my skills and take calculated risks in the IT field. 🏏💻",
       ],
     },
   ],
