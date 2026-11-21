@@ -147,6 +147,12 @@ export function Room({ room }: { room: RoomInfo }) {
                         <li key={t}>{t}</li>
                       ))}
                     </ul>
+                    {p.stat ? (
+                      <p className="metric">
+                        <b>{p.stat.value}</b>
+                        <span>{p.stat.label}</span>
+                      </p>
+                    ) : null}
                     {room.noLinks ? null : p.url ? (
                       <a className="live" href={p.url} target="_blank" rel="noopener noreferrer">
                         Visit live site {ARROW}

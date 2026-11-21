@@ -15,6 +15,8 @@ export type SiteContent = {
   name: string;
   firstName: string;
   email: string;
+  /** The live address, used for link previews, the sitemap and canonical links. */
+  url: string;
   title: string;
   description: string;
   timeline: Chapter[];
@@ -24,9 +26,10 @@ export const site: SiteContent = {
   name: "Guru Charan",
   firstName: "Guru",
   email: "gurumurugan291@gmail.com",
-  title: "Guru Charan — Freelance Web & AI Developer, UI/UX Designer",
+  url: "https://guru1315-portfolio.vercel.app",
+  title: "Guru Charan — Web, AI & ML Developer · UI/UX Designer",
   description:
-    "Freelance developer and designer building websites, apps and brand design for clients worldwide.",
+    "Guru Charan is a freelance web, AI and ML developer and UI/UX designer: 3D websites, AI agents and RAG apps, machine-learning models and brand design, built end to end.",
   timeline: [
     {
       year: "2026",

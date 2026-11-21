@@ -12,6 +12,8 @@ export type Project = {
   url?: string;
   /** The note shown when there is no link; defaults to "Screens from the app". */
   note?: string;
+  /** A headline result shown as a badge on the card (e.g. { value: "0.92", label: "ROC-AUC on unseen test data" }). */
+  stat?: { value: string; label: string };
   /** Tall screenshot that scrolls on the monitor or phone screen. */
   shot: string;
   /** App icon shown beside the label (apps only). */
@@ -311,6 +313,7 @@ export const ROOMS: RoomInfo[] = [
         sub: "Linear Regression · medical insurance charges",
         desc: "Predicts a person's yearly medical insurance charges from age, BMI, smoking and region across 1,338 policies. With feature engineering, R² rose from 0.78 to 0.87 and the average error fell from $4,181 to $2,755.",
         tags: ["scikit-learn", "Feature engineering", "R² · MAE · RMSE"],
+        stat: { value: "0.87", label: "R² on test data, up from 0.78" },
         shot: shot("ml-insurance"),
       },
       {
@@ -319,6 +322,7 @@ export const ROOMS: RoomInfo[] = [
         sub: "Logistic Regression · 891 passengers",
         desc: "Predicts who survived the Titanic from class, sex, age and fare. Beats the always-“died” baseline of 61.5% with 79.3% test accuracy and a ROC-AUC of 0.85, then explores decision thresholds and regularisation.",
         tags: ["Classification", "Threshold tuning", "ROC-AUC"],
+        stat: { value: "79.3%", label: "accuracy vs a 61.5% baseline" },
         shot: shot("ml-titanic"),
       },
       {
@@ -327,6 +331,7 @@ export const ROOMS: RoomInfo[] = [
         sub: "k-Nearest Neighbours · 569 tumour samples",
         desc: "Classifies breast tumours as malignant or benign from 30 cell-nucleus measurements. A k-NN written from scratch matches scikit-learn at 95.6%; tuning k reaches a ROC-AUC of 0.97, and an experiment shows how noisy features hurt distance-based models.",
         tags: ["Built from scratch", "Hyperparameter tuning", "Recall-focused"],
+        stat: { value: "0.97", label: "ROC-AUC, k-NN built from scratch" },
         shot: shot("ml-cancer"),
       },
       {
@@ -335,6 +340,7 @@ export const ROOMS: RoomInfo[] = [
         sub: "Decision Tree · 768 patients",
         desc: "Predicts diabetes from 8 clinical measurements. Shows how an unrestricted tree memorises its data (100% on training, 68% on test, 111 leaves), then prunes it with cross-validation to a small tree whose rules a doctor can read.",
         tags: ["Overfitting", "Pruning", "Explainable rules"],
+        stat: { value: "111 → 4", label: "leaves after pruning the tree" },
         shot: shot("ml-diabetes"),
       },
       {
@@ -343,6 +349,7 @@ export const ROOMS: RoomInfo[] = [
         sub: "Random Forest · 7,043 telecom customers",
         desc: "Predicts which customers are about to leave. Builds a forest by hand from bootstrapped trees (78.5% accuracy, AUC 0.82, on par with scikit-learn), then tunes it to a cross-validated ROC-AUC of 0.85 and picks a threshold that catches more churners.",
         tags: ["Bagging from scratch", "Grid search", "Imbalanced data"],
+        stat: { value: "0.85", label: "cross-validated ROC-AUC" },
         shot: shot("ml-churn"),
       },
       {
@@ -351,6 +358,7 @@ export const ROOMS: RoomInfo[] = [
         sub: "Naive Bayes · 1,797 digit images",
         desc: "Recognises handwritten digits from 8×8 pixel images. Compares Gaussian, Multinomial and Bernoulli Naive Bayes, then adds PCA to lift accuracy from 82.9% to 94.9% on digits it has never seen.",
         tags: ["Image classification", "PCA", "Model comparison"],
+        stat: { value: "94.9%", label: "accuracy with PCA, up from 82.9%" },
         shot: shot("ml-digits"),
       },
       {
@@ -359,6 +367,7 @@ export const ROOMS: RoomInfo[] = [
         sub: "Support Vector Machine · 1,599 red wines",
         desc: "Picks out the rare good wines (a taster score of 7 or more) from 11 chemical measurements. Shows why SVMs need scaling (F1 0.03 → 0.41), tunes C and gamma, then uses class weights and a chosen threshold to find 61% of the good wines instead of 33%, at a test ROC-AUC of 0.84.",
         tags: ["RBF kernel", "Class weights", "Threshold tuning"],
+        stat: { value: "0.84", label: "ROC-AUC on unseen test wines" },
         shot: shot("ml-wine"),
       },
       {
@@ -367,6 +376,7 @@ export const ROOMS: RoomInfo[] = [
         sub: "Gradient Boosting · 32,561 census records",
         desc: "Predicts who earns more than $50K a year. Builds boosting from scratch to show small trees correcting each other's mistakes, then beats logistic regression and a random forest with 87% accuracy and a test ROC-AUC of 0.92, using early stopping, tuning and a check across groups.",
         tags: ["Boosting from scratch", "Early stopping", "XGBoost"],
+        stat: { value: "0.92", label: "ROC-AUC on unseen test data" },
         shot: shot("ml-income"),
       },
       {
@@ -375,6 +385,7 @@ export const ROOMS: RoomInfo[] = [
         sub: "K-Means · 200 shoppers",
         desc: "Groups mall customers by income and spending with no labels to learn from. A k-means written from scratch, the elbow method and silhouette scores settle on 5 segments (silhouette 0.555), each profiled and named, such as “high income, low spending”, and checked against three other clustering methods.",
         tags: ["Unsupervised", "Elbow & silhouette", "Segmentation"],
+        stat: { value: "5", label: "customer segments, silhouette 0.555" },
         shot: shot("ml-mall"),
       },
       {
@@ -383,6 +394,7 @@ export const ROOMS: RoomInfo[] = [
         sub: "PCA · 178 wines, 13 measurements",
         desc: "Shrinks 13 chemical measurements into 2 that keep 55% of the variance and still separate the three grape cultivars on a flat map. A PCA written from scratch matches scikit-learn exactly, and a classifier on just 5 components reaches 97.8% against 98.3% with all 13 columns.",
         tags: ["PCA from scratch", "Scaling", "Visualisation"],
+        stat: { value: "97.8%", label: "accuracy from 5 of 13 measurements" },
         shot: shot("ml-pca"),
       },
       {
@@ -391,6 +403,7 @@ export const ROOMS: RoomInfo[] = [
         sub: "Neural network · 30,000 card clients",
         desc: "Predicts which clients will miss next month's payment. A network written from scratch with backpropagation learns a curved boundary a straight line can't (94.7% against 84%); on the real data, scaling, a tuned 128-64-32 network and a chosen threshold catch 57% of defaulters at a test ROC-AUC of 0.77, matched in Keras.",
         tags: ["Backprop from scratch", "scikit-learn MLP", "Keras"],
+        stat: { value: "0.77", label: "ROC-AUC, matched in Keras" },
         shot: shot("ml-credit"),
       },
     ],

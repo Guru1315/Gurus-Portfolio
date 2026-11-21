@@ -1,9 +1,26 @@
 import type { Metadata, Viewport } from "next";
 import { site } from "@/components/sites/portfolio/content";
 
+// Link previews (LinkedIn, WhatsApp, X, Slack...) use the share card in opengraph-image.jpg / twitter-image.jpg, which
+// Next adds to every page; metadataBase turns them into absolute URLs.
 export const metadata: Metadata = {
+  metadataBase: new URL(site.url),
   title: site.title,
   description: site.description,
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    url: "/",
+    siteName: `${site.name} · Portfolio`,
+    title: site.title,
+    description: site.description,
+    locale: "en_IN",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: site.title,
+    description: site.description,
+  },
 };
 
 export const viewport: Viewport = {
