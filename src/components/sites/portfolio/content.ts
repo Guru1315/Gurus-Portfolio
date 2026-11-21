@@ -26,7 +26,7 @@ export const site: SiteContent = {
   name: "Guru Charan",
   firstName: "Guru",
   email: "gurumurugan291@gmail.com",
-  url: "https://guru1315-portfolio.vercel.app",
+  url: "https://www.gurucharan.me",
   title: "Guru Charan — Web, AI & ML Developer · UI/UX Designer",
   description:
     "Guru Charan is a freelance web, AI and ML developer and UI/UX designer: 3D websites, AI agents and RAG apps, machine-learning models and brand design, built end to end.",
