@@ -123,6 +123,9 @@ export function portfolioMarkup(c: SiteContent): string {
           <button class="pill pill--outline" data-go="works">
             <span class="pill__in" data-h="s 1 1.04" data-hs="320 18" data-ht=".pill">See my work</span>
           </button>
+          <a class="pill pill--outline" href="/Guru-Charan-Resume.pdf" download="Guru-Charan-Resume.pdf">
+            <span class="pill__in" data-h="s 1 1.04" data-hs="320 18" data-ht=".pill">Download CV <svg class="dl" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg></span>
+          </a>
         </div>
       </div>
 
@@ -279,6 +282,7 @@ ${c.timeline.map(chapter).join("\n")}
     <div class="sf__cta">
       <button class="sf__btn" data-contact>Hire me <b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></b></button>
       <button class="sf__ghost" data-go="works">See my work</button>
+      <a class="sf__ghost" href="/Guru-Charan-Resume.pdf" download="Guru-Charan-Resume.pdf">Download CV</a>
     </div>
     <div class="sf__cols">
       <div><h3>Work</h3><ul class="work"><li><a href="/web-developer" data-door="0">Web Development</a></li><li><a href="/app-developer" data-door="1">AI Project Development</a></li><li><a href="/ml-developer" data-door="2">ML Development</a></li><li><a href="/ui-ux-designer" data-door="3">UI/UX Design</a></li><li><a href="/graphic-designer" data-door="4">Graphic Design</a></li></ul></div>
@@ -307,7 +311,10 @@ ${c.timeline.map(chapter).join("\n")}
   <nav class="shell navm__nav" aria-label="Menu"><ul id="navList"></ul></nav>
   <div class="shell navm__bot">
     <span>Local time<span data-navtime></span></span>
-    <button id="navStart" style="min-height:44px">Hire me →</button>
+    <div class="navm__acts">
+      <a href="/Guru-Charan-Resume.pdf" download="Guru-Charan-Resume.pdf" style="min-height:44px">Download CV ↓</a>
+      <button id="navStart" style="min-height:44px">Hire me →</button>
+    </div>
   </div>
 </div>
 

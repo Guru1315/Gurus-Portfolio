@@ -324,6 +324,7 @@ body.ready .fig{opacity:1;transform:translate(-50%,0)}
 .pill--light .pill__in{background:var(--surface);color:var(--foreground)}
 .pill--outline .pill__in{border:1px solid var(--line);background:transparent;color:var(--foreground)}
 .pill--outline:hover .pill__in{background:var(--outline-h)}
+.pill__in .dl{width:1rem;height:1rem;flex:none;margin-right:-.25rem}
 .pill__badge{width:2.25rem;height:2.25rem;display:grid;place-items:center;border-radius:9999px;font-size:1rem;background:var(--ink);color:#fff}
 .pill--dark .pill__badge{background:var(--btn-badge-bg);color:var(--btn-badge-fg)}
 
@@ -785,6 +786,9 @@ html:not([data-mode="dark"]) .spill{mix-blend-mode:normal;background:linear-grad
 @media (min-width:640px){.navm__bot{flex-direction:row;justify-content:space-between;align-items:center}}
 .navm__bot button{text-align:left;text-transform:uppercase;letter-spacing:.025em;color:rgba(255,255,255,.7)}
 .navm__bot button:hover{color:#fff;text-decoration:underline}
+.navm__acts{display:flex;align-items:center;gap:1.75rem}
+.navm__bot a{display:inline-flex;align-items:center;text-transform:uppercase;letter-spacing:.025em;color:rgba(255,255,255,.7)}
+.navm__bot a:hover{color:#fff;text-decoration:underline}
 
 /* ---------- request modal ---------- */
 .modal{position:fixed;inset:0;z-index:110;display:flex;align-items:flex-end;justify-content:center;padding:1rem;background:var(--scrim);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);opacity:0;transition:opacity .4s var(--e-spring)}
